@@ -83,4 +83,5 @@ export type Venue = {
   capacity: string;
   timezone: string;
   matches: number;
+  image: string;
 };

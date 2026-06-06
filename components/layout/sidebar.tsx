@@ -1,6 +1,7 @@
 "use client";
 
-import { Activity, CalendarDays, GitBranch, Home, MapPin, Newspaper, Send, Shield, Sparkles, Star, Table2, Trophy, Users } from "lucide-react";
+import { Activity, CalendarDays, GitBranch, Home, MapPin, Newspaper, Send, Shield, Sparkles, Star, Table2, Users } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -87,13 +88,16 @@ export function Sidebar() {
   return (
     <aside className="sticky top-0 hidden h-screen w-[260px] shrink-0 flex-col border-r border-line bg-black/72 backdrop-blur-xl lg:flex">
       {/* Logo — always visible, never scrolls */}
-      <div className="shrink-0 border-b border-line px-4 py-4">
-        <Link href="/" className="flex items-center gap-3">
-          <Trophy className="h-10 w-10 text-gold" />
-          <div>
-            <div className="text-3xl font-black tracking-normal">WC26</div>
-            <div className="-mt-1 text-sm font-semibold uppercase tracking-[.18em] text-slate-300">Live Hub</div>
-          </div>
+      <div className="shrink-0 border-b border-line px-4 py-3">
+        <Link href="/" className="block">
+          <Image
+            src="/logo.png"
+            alt="WC26 Live Hub"
+            width={220}
+            height={60}
+            priority
+            className="h-auto w-full max-w-[220px]"
+          />
         </Link>
       </div>
 
