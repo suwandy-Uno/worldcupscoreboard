@@ -1,6 +1,5 @@
 "use client";
 
-import { Search, Settings } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { TimezoneSelector } from "@/components/ui/timezone-selector";
 
@@ -32,8 +31,6 @@ export function Header() {
           })}
         </div>
         <div className="ml-auto flex items-center gap-3">
-          <Search className="h-5 w-5 text-slate-300" />
-          <Settings className="h-5 w-5 text-slate-300" />
           <TimezoneSelector compact />
         </div>
       </div>
