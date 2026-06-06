@@ -61,7 +61,7 @@ function parseRSSItems(xml: string, source: string) {
     const isBreaking = category === "Breaking News" || category === "Injury Alert";
 
     items.push({
-      id: `rss-${Buffer.from(title).toString("base64").slice(0, 12)}`,
+      id: `rss-${btoa(encodeURIComponent(title)).slice(0, 12)}`,
       title,
       category,
       summary: description || "Read the full story on " + source,

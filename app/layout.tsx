@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { MobileNav } from "@/components/layout/mobile-nav";
@@ -28,14 +29,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <script
+      <body className={inter.className}>
+        <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2494373577921258"
           crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
-      </head>
-      <body className={inter.className}>
         <div className="min-h-screen lg:grid lg:grid-cols-[260px_1fr]">
           <Sidebar />
           <div className="min-w-0">
