@@ -29,7 +29,16 @@ export function NewsCard({ item }: { item: NewsItem }) {
     <article className="card overflow-hidden flex flex-col h-full transition-transform hover:-translate-y-0.5 hover:shadow-glow">
       <div className="relative h-36 overflow-hidden">
         {isUrl ? (
-          <img src={item.image} alt={item.title} className="h-full w-full object-cover" loading="lazy" />
+          <img
+            src={item.image}
+            alt=""
+            className="h-full w-full object-cover"
+            loading="lazy"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src =
+                "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80";
+            }}
+          />
         ) : (
           <div className="h-full w-full" style={{ background: item.image }} />
         )}
