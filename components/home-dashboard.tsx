@@ -13,13 +13,14 @@ import { useTimezone } from "@/lib/hooks/use-timezone";
 import { formatClock } from "@/lib/services/timezone";
 
 type PredictionCardData = { match?: Match; prediction: Prediction };
+type Scorer = { name: string; team: string; flagCode: string; goals: number };
 
-/* ─── Top Scorers data ─────────────────────────────────────── */
-const TOP_SCORERS = [
-  { name: "H. Lozano", team: "Mexico", flagCode: "mx", goals: 2 },
-  { name: "Á. Morata", team: "Spain", flagCode: "es", goals: 1 },
-  { name: "T. Weah", team: "USA", flagCode: "us", goals: 1 },
-  { name: "P. Tau", team: "South Africa", flagCode: "za", goals: 1 },
+/* ─── Static fallback scorers (shown before API loads) ──────── */
+const FALLBACK_SCORERS: Scorer[] = [
+  { name: "H. Lozano",  team: "Mexico",       flagCode: "mx", goals: 2 },
+  { name: "Á. Morata",  team: "Spain",        flagCode: "es", goals: 1 },
+  { name: "T. Weah",    team: "USA",          flagCode: "us", goals: 1 },
+  { name: "P. Tau",     team: "South Africa", flagCode: "za", goals: 1 },
 ];
 
 export function HomeDashboard({
@@ -38,6 +39,7 @@ export function HomeDashboard({
   const live = useAutoRefresh(matches, "/api/matches", 15000);
   const injuryState = useAutoRefresh(injuries, "/api/injuries", 60000);
   const newsState = useAutoRefresh(news, "/api/news", 90000);
+  const scorersState = useAutoRefresh(FALLBACK_SCORERS, "/api/scorers", 120000);
   const { timezone } = useTimezone();
   const [now, setNow] = useState(new Date());
 
@@ -178,7 +180,7 @@ export function HomeDashboard({
             <h3 className="text-sm font-bold">Top Scorers <span className="text-xs font-normal text-slate-400">(So Far)</span></h3>
           </div>
           <ol className="space-y-3">
-            {TOP_SCORERS.map((s, i) => (
+            {scorersState.data.slice(0, 4).map((s, i) => (
               <li key={s.name} className="flex items-center gap-3">
                 <span className="w-4 shrink-0 text-xs text-slate-500">{i + 1}</span>
                 <img
