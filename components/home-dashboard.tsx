@@ -16,10 +16,10 @@ type PredictionCardData = { match?: Match; prediction: Prediction };
 
 /* ─── Top Scorers data ─────────────────────────────────────── */
 const TOP_SCORERS = [
-  { name: "H. Lozano", team: "Mexico", flag: "🇲🇽", goals: 2 },
-  { name: "Á. Morata", team: "Spain", flag: "🇪🇸", goals: 1 },
-  { name: "T. Weah", team: "USA", flag: "🇺🇸", goals: 1 },
-  { name: "P. Tau", team: "South Africa", flag: "🇿🇦", goals: 1 },
+  { name: "H. Lozano", team: "Mexico", flagCode: "mx", goals: 2 },
+  { name: "Á. Morata", team: "Spain", flagCode: "es", goals: 1 },
+  { name: "T. Weah", team: "USA", flagCode: "us", goals: 1 },
+  { name: "P. Tau", team: "South Africa", flagCode: "za", goals: 1 },
 ];
 
 export function HomeDashboard({
@@ -66,9 +66,10 @@ export function HomeDashboard({
     status === "Fit" ? "bg-emerald-900/40 text-emerald-400" :
     "bg-slate-700 text-slate-300";
 
-  const teamFlag: Record<string, string> = {
-    Germany: "🇩🇪", Brazil: "🇧🇷", France: "🇫🇷", USA: "🇺🇸",
-    England: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", Spain: "🇪🇸", Argentina: "🇦🇷", Mexico: "🇲🇽"
+  const teamFlagCode: Record<string, string> = {
+    Germany: "de", Brazil: "br", France: "fr", USA: "us",
+    England: "gb-eng", Spain: "es", Argentina: "ar", Mexico: "mx",
+    Netherlands: "nl", Japan: "jp", Portugal: "pt", Morocco: "ma"
   };
 
   return (
@@ -77,23 +78,29 @@ export function HomeDashboard({
       <div className="space-y-7">
 
         {/* Hero banner */}
-        <div className="card relative overflow-hidden rounded-xl p-8 shadow-glow">
-          <div className="absolute inset-0"
-            style={{ background: "radial-gradient(circle at 75% 50%, rgba(246,196,83,.18), transparent 55%), radial-gradient(circle at 20% 70%, rgba(47,128,255,.22), transparent 50%), linear-gradient(180deg,rgba(255,255,255,.05),transparent)" }}
+        <div className="relative overflow-hidden rounded-xl shadow-glow" style={{ minHeight: 260 }}>
+          {/* Stadium background */}
+          <img
+            src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1400&q=80"
+            alt="Stadium"
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="eager"
           />
-          {/* Trophy watermark */}
-          <Trophy className="absolute right-8 top-1/2 h-48 w-48 -translate-y-1/2 text-gold opacity-10 hidden md:block" />
-          <div className="relative z-10 max-w-lg">
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(10,14,26,0.92) 45%, rgba(10,14,26,0.55) 75%, rgba(10,14,26,0.15) 100%)" }} />
+          {/* Gold accent glow */}
+          <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 80% 50%, rgba(246,196,83,.12), transparent 50%)" }} />
+          <div className="relative z-10 p-8 max-w-lg">
             <p className="text-xs font-bold uppercase tracking-[.2em] text-gold">FIFA World Cup™</p>
             <h1 className="mt-2 text-4xl font-black leading-tight sm:text-5xl">
               FIFA WORLD CUP<br />2026™
             </h1>
             <p className="mt-1.5 text-lg font-semibold text-slate-300">11 JUNE — 19 JULY 2026</p>
             <div className="mt-4 flex flex-wrap gap-5 text-sm text-slate-300">
-              <span className="flex items-center gap-1.5">👥 48 Teams</span>
-              <span className="flex items-center gap-1.5">📅 104 Matches</span>
+              <span className="flex items-center gap-1.5"><Trophy className="h-3.5 w-3.5 text-gold" /> 48 Teams</span>
+              <span className="flex items-center gap-1.5"><CalendarDays className="h-3.5 w-3.5" /> 104 Matches</span>
               <span className="flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" /> 16 Cities</span>
-              <span className="flex items-center gap-1.5">🛡️ 3 Countries</span>
+              <span className="flex items-center gap-1.5"><Star className="h-3.5 w-3.5" /> 3 Countries</span>
             </div>
             <a href="/schedule" className="mt-5 inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-bold text-white hover:bg-brand/80">
               <CalendarDays className="h-4 w-4" /> Explore Full Schedule
@@ -173,13 +180,19 @@ export function HomeDashboard({
           <ol className="space-y-3">
             {TOP_SCORERS.map((s, i) => (
               <li key={s.name} className="flex items-center gap-3">
-                <span className="w-4 text-xs text-slate-500">{i + 1}</span>
-                <span className="text-xl">{s.flag}</span>
-                <div className="flex-1">
-                  <div className="text-sm font-semibold">{s.name}</div>
+                <span className="w-4 shrink-0 text-xs text-slate-500">{i + 1}</span>
+                <img
+                  src={`https://flagcdn.com/w40/${s.flagCode}.png`}
+                  alt={s.team}
+                  width={28}
+                  height={21}
+                  className="rounded object-cover shadow"
+                />
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-semibold truncate">{s.name}</div>
                   <div className="text-xs text-slate-400">{s.team}</div>
                 </div>
-                <span className="text-xl font-black">{s.goals}</span>
+                <span className="text-xl font-black text-gold">{s.goals}</span>
               </li>
             ))}
           </ol>
@@ -210,20 +223,27 @@ export function HomeDashboard({
             <a href="/injuries" className="text-xs text-brand hover:opacity-80">View All</a>
           </div>
           <div className="space-y-3">
-            {injuryState.data.filter((i) => i.status !== "Fit").slice(0, 3).map((injury) => (
-              <div key={injury.id} className="flex items-center gap-3">
-                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-xl">
-                  {teamFlag[injury.team] ?? "🏳️"}
+            {injuryState.data.filter((i) => i.status !== "Fit").slice(0, 3).map((injury) => {
+              const code = teamFlagCode[injury.team];
+              return (
+                <div key={injury.id} className="flex items-center gap-3">
+                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-white/10 overflow-hidden">
+                    {code ? (
+                      <img src={`https://flagcdn.com/w80/${code}.png`} alt={injury.team} className="h-full w-full object-cover" />
+                    ) : (
+                      <span className="text-lg">🏳️</span>
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-semibold truncate">{injury.player}</div>
+                    <div className="text-xs text-slate-400">{injury.team} · {injury.issue}</div>
+                  </div>
+                  <span className={`flex-shrink-0 rounded px-2 py-0.5 text-xs font-bold ${injuryBadge(injury.status)}`}>
+                    {injury.status}
+                  </span>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm font-semibold truncate">{injury.player}</div>
-                  <div className="text-xs text-slate-400">{injury.issue}</div>
-                </div>
-                <span className={`flex-shrink-0 rounded px-2 py-0.5 text-xs font-bold ${injuryBadge(injury.status)}`}>
-                  {injury.status}
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 

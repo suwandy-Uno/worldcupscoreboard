@@ -21,8 +21,13 @@ export function StandingsTable({ group, rows }: { group: string; rows: Standing[
             return (
               <tr key={row.team} className="border-t border-line">
                 <td className="px-3 py-2">
-                  <span className={index < 2 ? "mr-2 text-emerald-300" : "mr-2 text-slate-500"}>{index + 1}</span>
-                  {team?.flag} {row.team}
+                  <div className="flex items-center gap-2">
+                    <span className={`w-4 shrink-0 text-xs ${index < 2 ? "text-emerald-300" : "text-slate-500"}`}>{index + 1}</span>
+                    {team?.flagCode ? (
+                      <img src={`https://flagcdn.com/w40/${team.flagCode}.png`} alt={row.team} width={22} height={16} className="rounded-sm object-cover" />
+                    ) : null}
+                    <span>{row.team}</span>
+                  </div>
                 </td>
                 <td className="px-2 py-2 text-right">{row.played}</td>
                 <td className="px-2 py-2 text-right">{row.won}</td>

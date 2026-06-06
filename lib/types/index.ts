@@ -5,6 +5,7 @@ export type Team = {
   name: string;
   slug: string;
   flag: string;
+  flagCode: string;
   group: string;
   confederation: string;
   ranking: number;

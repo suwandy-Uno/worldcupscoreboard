@@ -22,7 +22,15 @@ export default async function TeamPage({ params }: { params: { slug: string } })
   const groupRows = standings.filter((row) => row.group === team.group);
   return (
     <>
-      <PageHeader title={`${team.flag} ${team.name}`} description={`Group ${team.group} · ${team.confederation} · FIFA ranking placeholder #${team.ranking}`} />
+      <div className="flex items-center gap-4 mb-4">
+        {team.flagCode && (
+          <img src={`https://flagcdn.com/w80/${team.flagCode}.png`} alt={team.name} width={56} height={42} className="rounded shadow" />
+        )}
+        <div>
+          <h1 className="text-2xl font-black">{team.name}</h1>
+          <p className="text-sm text-slate-400">Group {team.group} · {team.confederation} · FIFA ranking #{team.ranking}</p>
+        </div>
+      </div>
       <div className="grid gap-5 xl:grid-cols-[1fr_360px]">
         <section className="space-y-5">
           <ScheduleTable matches={fixtures.length ? fixtures : matches.slice(0, 4)} />

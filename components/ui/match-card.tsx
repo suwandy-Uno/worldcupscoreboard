@@ -20,11 +20,11 @@ export function MatchCard({ match }: { match: Match }) {
         <Star className="h-4 w-4" />
       </div>
       <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
-        <TeamSide name={match.home} flag={home?.flag ?? "🏳️"} />
+        <TeamSide name={match.home} flagCode={home?.flagCode} />
         <div className="text-center text-3xl font-black tabular-nums">
           {match.homeScore ?? "-"} - {match.awayScore ?? "-"}
         </div>
-        <TeamSide name={match.away} flag={away?.flag ?? "🏳️"} align="right" />
+        <TeamSide name={match.away} flagCode={away?.flagCode} align="right" />
       </div>
       <div className="mt-4 min-h-10 text-xs text-slate-300">{match.scorers.join(" · ") || formatMatchTime(match.isoDate, timezone)}</div>
       <a href={`/match/${match.slug}`} className="mt-4 flex items-center justify-center gap-2 border-t border-line pt-3 text-sm text-brand">
@@ -34,11 +34,22 @@ export function MatchCard({ match }: { match: Match }) {
   );
 }
 
-function TeamSide({ name, flag, align = "left" }: { name: string; flag: string; align?: "left" | "right" }) {
+function TeamSide({ name, flagCode, align = "left" }: { name: string; flagCode?: string; align?: "left" | "right" }) {
   return (
-    <div className={align === "right" ? "text-right" : ""}>
-      <div className="text-4xl">{flag}</div>
-      <div className="mt-1 text-sm font-semibold">{name}</div>
+    <div className={`flex flex-col items-${align === "right" ? "end" : "start"} gap-2`}>
+      {flagCode ? (
+        <img
+          src={`https://flagcdn.com/w80/${flagCode}.png`}
+          alt={name}
+          width={56}
+          height={42}
+          className="rounded object-cover shadow"
+          onError={(e) => { (e.target as HTMLImageElement).style.opacity = "0"; }}
+        />
+      ) : (
+        <span className="text-4xl">🏳️</span>
+      )}
+      <div className="text-sm font-semibold">{name}</div>
     </div>
   );
 }
