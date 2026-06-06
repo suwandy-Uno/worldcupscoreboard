@@ -43,7 +43,7 @@ export function Sidebar() {
   const cd = useCountdown(NEXT_MATCH_ISO);
 
   return (
-    <aside className="fixed left-0 top-0 z-50 hidden h-screen w-[260px] overflow-y-auto border-r border-line bg-black/72 p-4 backdrop-blur-xl lg:block scrollbar-hide">
+    <aside className="sticky top-0 hidden h-screen w-[260px] shrink-0 overflow-y-auto border-r border-line bg-black/72 p-4 backdrop-blur-xl lg:block scrollbar-hide">
       <Link href="/" className="mb-6 flex items-center gap-3">
         <Trophy className="h-10 w-10 text-gold" />
         <div>
@@ -73,10 +73,10 @@ export function Sidebar() {
       {/* Next Big Match */}
       <div className="card mt-5 p-4">
         <p className="mb-3 text-center text-xs font-bold uppercase tracking-wider text-slate-400">Next Big Match</p>
-        <div className="flex items-center justify-center gap-3 text-4xl">
-          🇦🇷
+        <div className="flex items-center justify-center gap-3">
+          <img src="https://flagcdn.com/w80/ar.png" alt="Argentina" width={40} height={30} className="rounded shadow" />
           <span className="text-sm font-semibold text-slate-400">vs</span>
-          🇫🇷
+          <img src="https://flagcdn.com/w80/fr.png" alt="France" width={40} height={30} className="rounded shadow" />
         </div>
         <div className="mt-1 text-center text-sm font-semibold">Argentina <span className="text-xs text-slate-500">vs</span> France</div>
         <div className="mt-1 text-center text-xs text-slate-400">Jun 15, 2026 • 20:00</div>
