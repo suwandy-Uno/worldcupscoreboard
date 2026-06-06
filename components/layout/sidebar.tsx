@@ -1,7 +1,7 @@
 "use client";
 
-import { Activity, CalendarDays, GitBranch, Home, MapPin, Newspaper, Send, Shield, Sparkles, Star, Table2, Users } from "lucide-react";
-import Image from "next/image";
+import { Activity, CalendarDays, GitBranch, Home, MapPin, Newspaper, Send, Shield, Sparkles, Star, Table2, Trophy, Users } from "lucide-react";
+import { Trophy } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -88,16 +88,28 @@ export function Sidebar() {
   return (
     <aside className="sticky top-0 hidden h-screen w-[260px] shrink-0 flex-col border-r border-line bg-black/72 backdrop-blur-xl lg:flex">
       {/* Logo — always visible, never scrolls */}
-      <div className="shrink-0 border-b border-line px-4 py-3">
+      <div className="shrink-0 border-b border-line px-4 py-4">
         <Link href="/" className="block">
-          <Image
+          <img
             src="/logo.png"
             alt="WC26 Live Hub"
-            width={220}
-            height={60}
-            priority
             className="h-auto w-full max-w-[220px]"
+            onError={(e) => {
+              // fallback to text logo if image missing
+              const el = e.currentTarget;
+              el.style.display = "none";
+              const fallback = el.nextElementSibling as HTMLElement | null;
+              if (fallback) fallback.style.display = "flex";
+            }}
           />
+          {/* Text fallback (hidden when image loads) */}
+          <span className="hidden items-center gap-3">
+            <Trophy className="h-10 w-10 text-gold" />
+            <span>
+              <span className="block text-3xl font-black tracking-normal">WC26</span>
+              <span className="-mt-1 block text-sm font-semibold uppercase tracking-[.18em] text-slate-300">Live Hub</span>
+            </span>
+          </span>
         </Link>
       </div>
 

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { TimezoneSelector } from "@/components/ui/timezone-selector";
@@ -24,7 +23,12 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-[1500px] items-center gap-4 px-4 sm:px-6 lg:px-8">
         {/* Logo — mobile only (sidebar hidden on mobile) */}
         <Link href="/" className="shrink-0 lg:hidden">
-          <Image src="/logo.png" alt="WC26 Live Hub" width={120} height={33} priority className="h-auto w-[120px]" />
+          <img
+            src="/logo.png"
+            alt="WC26 Live Hub"
+            className="h-auto w-[120px]"
+            onError={(e) => { e.currentTarget.style.display = "none"; }}
+          />
         </Link>
         <div className="hidden flex-1 items-center gap-7 overflow-x-auto text-sm text-slate-200 lg:flex">
           {nav.map(({ label, href }) => {
