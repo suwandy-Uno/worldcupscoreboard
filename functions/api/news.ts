@@ -80,7 +80,6 @@ export async function onRequestGet() {
     FEEDS.map(async ({ url, source }) => {
       const res = await fetch(url, {
         headers: { "User-Agent": "WorldCupScoreboard/1.0 (+https://worldcupscoreboard.com)" },
-        cf: { cacheTtl: 300, cacheEverything: true } as RequestInitCfProperties,
       });
       if (!res.ok) throw new Error(`${source} returned ${res.status}`);
       const xml = await res.text();

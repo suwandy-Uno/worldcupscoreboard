@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, CalendarDays, ChevronRight, Clock, MapPin, Star, Trophy } from "lucide-react";
+import { CalendarDays, ChevronRight, Clock, MapPin, Star, Trophy } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { Injury, Match, NewsItem, Prediction, Standing } from "@/lib/types";
 import { MatchCard } from "@/components/ui/match-card";
