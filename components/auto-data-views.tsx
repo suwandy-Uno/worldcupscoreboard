@@ -58,5 +58,5 @@ export function AutoTeams({ teams }: { teams: Team[] }) {
 
 export function AutoVenues({ venues }: { venues: Venue[] }) {
   const state = useAutoRefresh(venues, "/api/venues", 120000);
-  return <><RefreshNote date={state.updatedAt} /><div className="grid gap-4 lg:grid-cols-2">{state.data.map((venue) => <VenueCard key={venue.id} venue={venue} />)}</div></>;
+  return <><RefreshNote date={state.updatedAt} /><div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{state.data.map((venue) => <VenueCard key={venue.id} venue={venue} />)}</div></>;
 }
