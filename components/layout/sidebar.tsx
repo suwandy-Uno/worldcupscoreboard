@@ -85,14 +85,20 @@ export function Sidebar() {
   const cd = useCountdown(NEXT_MATCH_ISO);
 
   return (
-    <aside className="sticky top-0 hidden h-screen w-[260px] shrink-0 overflow-y-auto border-r border-line bg-black/72 p-4 backdrop-blur-xl lg:block scrollbar-hide">
-      <Link href="/" className="mb-6 flex items-center gap-3">
-        <Trophy className="h-10 w-10 text-gold" />
-        <div>
-          <div className="text-3xl font-black tracking-normal">WC26</div>
-          <div className="-mt-1 text-sm font-semibold uppercase tracking-[.18em] text-slate-300">Live Hub</div>
-        </div>
-      </Link>
+    <aside className="sticky top-0 hidden h-screen w-[260px] shrink-0 flex-col border-r border-line bg-black/72 backdrop-blur-xl lg:flex">
+      {/* Logo — always visible, never scrolls */}
+      <div className="shrink-0 border-b border-line px-4 py-4">
+        <Link href="/" className="flex items-center gap-3">
+          <Trophy className="h-10 w-10 text-gold" />
+          <div>
+            <div className="text-3xl font-black tracking-normal">WC26</div>
+            <div className="-mt-1 text-sm font-semibold uppercase tracking-[.18em] text-slate-300">Live Hub</div>
+          </div>
+        </Link>
+      </div>
+
+      {/* Scrollable content below logo */}
+      <div className="flex-1 overflow-y-auto p-4 scrollbar-hide">
 
       <nav className="space-y-0.5">
         {links.map(([href, label, Icon], index) => (
@@ -137,6 +143,8 @@ export function Sidebar() {
 
       {/* Share with a friend */}
       <ShareWidget />
+
+      </div> {/* end scrollable area */}
     </aside>
   );
 }
