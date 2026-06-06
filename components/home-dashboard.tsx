@@ -38,7 +38,7 @@ export function HomeDashboard({
 }) {
   const live = useAutoRefresh(matches, "/api/matches", 15000);
   const injuryState = useAutoRefresh(injuries, "/api/injuries", 60000);
-  const newsState = useAutoRefresh(news, "/api/news", 90000);
+  const newsState = useAutoRefresh(news, "/api/news", 300000); // 5 min — RSS feeds cache for 5 min
   const scorersState = useAutoRefresh(FALLBACK_SCORERS, "/api/scorers", 120000);
   const { timezone } = useTimezone();
   const [now, setNow] = useState(new Date());
@@ -149,11 +149,21 @@ export function HomeDashboard({
         {/* Latest News */}
         <section>
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-base font-bold">Latest News</h2>
-            <a href="/news" className="text-xs text-brand hover:opacity-80">View All News</a>
+            <div className="flex items-center gap-2">
+              <h2 className="text-base font-bold">Latest News</h2>
+              {newsState.data.some((n) => n.isBreaking) && (
+                <span className="flex items-center gap-1 rounded bg-rose-600/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-rose-400">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-500" /> Live Updates
+                </span>
+              )}
+            </div>
+            <a href="/news" className="text-xs text-brand hover:opacity-80">View All</a>
           </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {newsState.data.slice(0, 3).map((item) => <NewsCard key={item.id} item={item} />)}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[...newsState.data]
+              .sort((a, b) => (b.isBreaking ? 1 : 0) - (a.isBreaking ? 1 : 0))
+              .slice(0, 20)
+              .map((item) => <NewsCard key={item.id} item={item} />)}
           </div>
         </section>
       </div>

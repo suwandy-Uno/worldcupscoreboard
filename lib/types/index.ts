@@ -69,6 +69,10 @@ export type NewsItem = {
   summary: string;
   image: string;
   publishedAt: string;
+  isBreaking?: boolean;
+  author?: string;
+  sourceUrl?: string;
+  source?: string;
 };
 
 export type Venue = {
