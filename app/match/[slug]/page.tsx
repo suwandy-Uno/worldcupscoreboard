@@ -5,6 +5,11 @@ import { PredictionCard } from "@/components/ui/prediction-card";
 import { getMatches, getPredictions } from "@/lib/services/sports-data";
 import { siteUrl } from "@/lib/utils";
 
+export async function generateStaticParams() {
+  const matches = await getMatches();
+  return matches.map((match) => ({ slug: match.slug }));
+}
+
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const match = (await getMatches()).find((item) => item.slug === params.slug);
   return { title: match ? `${match.home} vs ${match.away} Match Centre` : "Match Centre", description: "Score, venue, local time, prediction, timeline placeholder, stats, injuries, and group impact." };

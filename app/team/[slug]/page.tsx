@@ -5,6 +5,11 @@ import { ScheduleTable } from "@/components/ui/schedule-table";
 import { StandingsTable } from "@/components/ui/standings-table";
 import { getInjuries, getMatches, getStandings, getTeams } from "@/lib/services/sports-data";
 
+export async function generateStaticParams() {
+  const teams = await getTeams();
+  return teams.map((team) => ({ slug: team.slug }));
+}
+
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const team = (await getTeams()).find((item) => item.slug === params.slug);
   return { title: team ? `${team.name} World Cup 2026 Team Hub` : "Team Hub", description: "Fixtures, group standing, injuries, predictions, and related sample news." };

@@ -1,3 +1,4 @@
+export const dynamic = "force-static";
 import { NextResponse } from "next/server";
 import { getVenues } from "@/lib/services/sports-data";
 
