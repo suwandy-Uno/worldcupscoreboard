@@ -2,29 +2,35 @@ export const dynamic = "force-static";
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/utils";
 
-const routes = [
-  "",
-  "/schedule",
-  "/live-scores",
-  "/standings",
-  "/bracket",
-  "/predictions",
-  "/injuries",
-  "/news",
-  "/teams",
-  "/venues",
-  "/world-cup-2026-schedule",
-  "/world-cup-2026-live-score",
-  "/world-cup-2026-standings",
-  "/world-cup-2026-predictions",
-  "/world-cup-2026-injuries",
-  "/world-cup-2026-bracket",
-  "/world-cup-2026-schedule-uk-time",
-  "/world-cup-2026-schedule-us-time",
-  "/world-cup-2026-schedule-australia-time",
-  "/world-cup-2026-schedule-india-time"
+const routes: Array<[string, number, MetadataRoute.Sitemap[number]["changeFrequency"]]> = [
+  ["", 1.0, "always"],
+  ["/live-scores", 1.0, "always"],
+  ["/schedule", 0.95, "hourly"],
+  ["/standings", 0.95, "hourly"],
+  ["/news", 0.9, "hourly"],
+  ["/injuries", 0.85, "hourly"],
+  ["/bracket", 0.85, "daily"],
+  ["/predictions", 0.8, "daily"],
+  ["/teams", 0.8, "weekly"],
+  ["/venues", 0.75, "weekly"],
+  // SEO landing pages — high-traffic long-tail keywords
+  ["/world-cup-2026-schedule", 0.9, "daily"],
+  ["/world-cup-2026-live-score", 0.9, "always"],
+  ["/world-cup-2026-standings", 0.85, "hourly"],
+  ["/world-cup-2026-predictions", 0.8, "daily"],
+  ["/world-cup-2026-injuries", 0.8, "daily"],
+  ["/world-cup-2026-bracket", 0.8, "daily"],
+  ["/world-cup-2026-schedule-uk-time", 0.85, "daily"],
+  ["/world-cup-2026-schedule-us-time", 0.85, "daily"],
+  ["/world-cup-2026-schedule-australia-time", 0.85, "daily"],
+  ["/world-cup-2026-schedule-india-time", 0.85, "daily"],
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route) => ({ url: siteUrl(route), lastModified: new Date(), changeFrequency: "hourly", priority: route ? 0.8 : 1 }));
+  return routes.map(([route, priority, changeFrequency]) => ({
+    url: siteUrl(route),
+    lastModified: new Date(),
+    changeFrequency,
+    priority,
+  }));
 }
