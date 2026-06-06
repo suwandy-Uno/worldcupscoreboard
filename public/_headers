@@ -2,9 +2,9 @@
   # Force HTTPS and prevent downgrade attacks
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 
-  # Block your site from being embedded in iframes (clickjacking / ad injection)
-  X-Frame-Options: DENY
-  Content-Security-Policy: frame-ancestors 'none'
+  # Block your site from being embedded in iframes (clickjacking)
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: frame-ancestors 'self'
 
   # Prevent MIME-type sniffing (stops scripts disguised as images)
   X-Content-Type-Options: nosniff
@@ -15,9 +15,8 @@
   # Lock down browser features not needed by a sports scoreboard
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
 
-  # Content Security Policy — blocks unauthorized scripts, iframes, and ad networks
-  # Allows: self, Next.js inline scripts, no external JS except trusted CDNs
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
+  # Content Security Policy — allows Google AdSense, blocks everything else
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://adservice.google.com https://www.googletagservices.com https://partner.googleadservices.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.googlesyndication.com https://*.googleadservices.com https://adservice.google.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
 
   # Cross-origin isolation
   X-DNS-Prefetch-Control: off
