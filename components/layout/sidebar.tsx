@@ -1,7 +1,6 @@
 "use client";
 
 import { Activity, CalendarDays, GitBranch, Home, MapPin, Newspaper, Send, Shield, Sparkles, Star, Table2, Trophy, Users } from "lucide-react";
-import { Trophy } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
