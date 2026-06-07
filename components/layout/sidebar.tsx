@@ -12,7 +12,7 @@ const links = [
   ["/standings", "Standings", Table2],
   ["/teams", "Teams", Users],
   ["/venues", "Venues", MapPin],
-  ["/bracket", "Playoff", GitBranch],
+  ["/playoff", "Playoff", GitBranch],
   ["/predictions", "Predictions", Sparkles],
   ["/injuries", "Injuries", Shield],
   ["/news", "News", Newspaper],

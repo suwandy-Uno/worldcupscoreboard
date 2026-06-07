@@ -9,7 +9,7 @@ const routes: Array<[string, number, MetadataRoute.Sitemap[number]["changeFreque
   ["/standings", 0.95, "hourly"],
   ["/news", 0.9, "hourly"],
   ["/injuries", 0.85, "hourly"],
-  ["/bracket", 0.85, "daily"],
+  ["/playoff", 0.85, "daily"],
   ["/predictions", 0.8, "daily"],
   ["/teams", 0.8, "weekly"],
   ["/venues", 0.75, "weekly"],
