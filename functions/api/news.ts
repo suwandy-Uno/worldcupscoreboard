@@ -1,9 +1,44 @@
-// Cloudflare Pages Function — fetches football news from BBC Sport + The Guardian RSS
+// Cloudflare Pages Function — fetches football news from reputable English-language RSS feeds
 
 const FEEDS = [
-  { url: "https://feeds.bbci.co.uk/sport/football/rss.xml", source: "BBC Sport" },
-  { url: "https://www.theguardian.com/football/rss", source: "The Guardian" },
+  { url: "https://feeds.bbci.co.uk/sport/football/rss.xml",  source: "BBC Sport" },
+  { url: "https://www.theguardian.com/football/rss",         source: "The Guardian" },
+  { url: "https://www.skysports.com/rss/12040",              source: "Sky Sports" },
+  { url: "https://www.espn.com/espn/rss/soccer/news",        source: "ESPN FC" },
 ];
+
+// Explicit allowlist of trusted domains — articles from any other domain are dropped.
+// This prevents low-quality, non-English, or unreliable sites from appearing.
+const ALLOWED_DOMAINS = new Set([
+  "bbc.co.uk",
+  "bbc.com",
+  "theguardian.com",
+  "skysports.com",
+  "espn.com",
+  "espnfc.com",
+  "theathletic.com",
+  "reuters.com",
+  "apnews.com",
+  "fifa.com",
+  "uefa.com",
+  "goal.com",
+  "independent.co.uk",
+  "telegraph.co.uk",
+  "ft.com",
+  "cbssports.com",
+  "nbcsports.com",
+  "sportingnews.com",
+]);
+
+function isAllowedUrl(url: string): boolean {
+  try {
+    const hostname = new URL(url).hostname.replace(/^www\./, "");
+    // Check exact match or subdomain match (e.g. "sport.bbc.co.uk" → "bbc.co.uk")
+    return [...ALLOWED_DOMAINS].some((d) => hostname === d || hostname.endsWith(`.${d}`));
+  } catch {
+    return false;
+  }
+}
 
 // Fallback Unsplash images — only used when an article has no image at all
 const FALLBACK_IMAGES = [
@@ -37,7 +72,6 @@ function stripHtml(raw: string): string {
 }
 
 function extractTag(xml: string, tag: string): string {
-  // Handle both plain and CDATA-wrapped content
   const re = new RegExp(`<${tag}[^>]*>\\s*(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?\\s*<\\/${tag}>`, "i");
   const m = xml.match(re);
   return m ? m[1].trim() : "";
@@ -49,15 +83,14 @@ function extractAttr(xml: string, tag: string, attr: string): string {
 }
 
 function extractImage(block: string): string | null {
-  // 1. <media:content url="..." medium="image"> — used by The Guardian
+  // 1. <media:content url="..."> — The Guardian, ESPN
   const mc = block.match(/<media:content[^>]+url=["']([^"']+)["'][^>]*>/i);
   if (mc) {
     const url = mc[1];
-    // Skip non-image media:content (video, audio)
     if (!url.match(/\.(mp4|webm|ogg|mp3|wav)(\?|$)/i)) return url;
   }
 
-  // 2. <media:thumbnail url="..."> — used by BBC Sport
+  // 2. <media:thumbnail url="..."> — BBC Sport, Sky Sports
   const mt = block.match(/<media:thumbnail[^>]+url=["']([^"']+)["']/i);
   if (mt) return mt[1];
 
@@ -66,7 +99,7 @@ function extractImage(block: string): string | null {
            || block.match(/<enclosure[^>]+url=["']([^"']+)["'][^>]+type=["']image[^"']*["']/i);
   if (enc) return enc[1];
 
-  // 4. First <img src="..."> inside description/content HTML
+  // 4. First <img src="..."> inside description HTML
   const desc = extractTag(block, "description") || extractTag(block, "content:encoded") || "";
   const img = desc.match(/<img[^>]+src=["']([^"']+)["']/i);
   if (img) return img[1];
@@ -102,15 +135,15 @@ function parseRSSItems(xml: string, source: string, fallbackOffset: number) {
     const title = stripHtml(extractTag(block, "title"));
     if (!title) { i++; continue; }
 
+    const link = extractTag(block, "link") || extractAttr(block, "link", "href");
+
+    // Drop articles that don't come from an allowed domain
+    if (link && !isAllowedUrl(link)) { i++; continue; }
+
     const rawDesc = extractTag(block, "description") || extractTag(block, "content:encoded") || "";
     const summary = stripHtml(rawDesc).slice(0, 180) || `Read the full story on ${source}.`;
-
-    const link = extractTag(block, "link") || extractAttr(block, "link", "href");
     const pubDate = extractTag(block, "pubDate") || extractTag(block, "dc:date") || extractTag(block, "published");
-
-    // Use the article's own image; fall back to Unsplash only if none found
     const image = extractImage(block) ?? FALLBACK_IMAGES[(fallbackOffset + i) % FALLBACK_IMAGES.length];
-
     const category = badgeFromTitle(title);
     const isBreaking = category === "Breaking News" || category === "Injury Alert";
 
@@ -138,7 +171,7 @@ export async function onRequestGet() {
       });
       if (!res.ok) throw new Error(`${source} returned ${res.status}`);
       const xml = await res.text();
-      return parseRSSItems(xml, source, feedIndex * 5); // fallbackOffset staggers Unsplash images per feed
+      return parseRSSItems(xml, source, feedIndex * 5);
     })
   );
 

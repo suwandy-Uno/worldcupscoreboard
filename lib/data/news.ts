@@ -19,8 +19,8 @@ export const news: NewsItem[] = [
     category: "Injury Alert",
     summary: "The Real Madrid winger left the pitch holding his left hamstring with 20 minutes remaining. CBF confirmed he will undergo scans on Sunday — a major worry ahead of Monday's opener.",
     image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&q=80",
-    publishedAt: minsAgo(15), isBreaking: true, author: "Adriana Noriega", source: "Globo Esporte",
-    sourceUrl: "https://globoesporte.globo.com/futebol/",
+    publishedAt: minsAgo(15), isBreaking: true, author: "Tom Marshall", source: "ESPN FC",
+    sourceUrl: "https://www.espn.com/soccer/",
   },
   {
     id: "n3",
@@ -55,8 +55,8 @@ export const news: NewsItem[] = [
     category: "Team News",
     summary: "Regragui's squad touched down for their first World Cup on North American soil as Morocco open against Germany on June 14.",
     image: "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=600&q=80",
-    publishedAt: minsAgo(110), isBreaking: false, author: "Mustapha Azzouz", source: "beIN Sports",
-    sourceUrl: "https://www.bein.com/en/football/",
+    publishedAt: minsAgo(110), isBreaking: false, author: "Jonathan Stevenson", source: "BBC Sport",
+    sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
     id: "n7",
@@ -118,8 +118,8 @@ export const news: NewsItem[] = [
     category: "Breaking News",
     summary: "The Brazilian Football Confederation confirmed on Saturday that Neymar is fit and has been included in the final 26-man squad, ending speculation about his fitness.",
     image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&q=80",
-    publishedAt: minsAgo(420), isBreaking: true, author: "Thiago Jansen", source: "Globo Esporte",
-    sourceUrl: "https://globoesporte.globo.com/futebol/",
+    publishedAt: minsAgo(420), isBreaking: true, author: "Dermot Corrigan", source: "The Athletic",
+    sourceUrl: "https://theathletic.com/soccer/",
   },
   {
     id: "n14",
