@@ -11,6 +11,7 @@ export const news: NewsItem[] = [
     summary: "France captain Kylian Mbappé put injury concerns to bed in Friday's training session, completing the full 90 minutes without restrictions as Les Bleus finalise preparations.",
     image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80",
     publishedAt: minsAgo(8), isBreaking: true, author: "L'Équipe", source: "BBC Sport",
+    sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
     id: "n2",
@@ -19,6 +20,7 @@ export const news: NewsItem[] = [
     summary: "The Real Madrid winger left the pitch holding his left hamstring with 20 minutes remaining. CBF confirmed he will undergo scans on Sunday — a major worry ahead of Monday's opener.",
     image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&q=80",
     publishedAt: minsAgo(15), isBreaking: true, author: "Adriana Noriega", source: "Globo Esporte",
+    sourceUrl: "https://globoesporte.globo.com/futebol/",
   },
   {
     id: "n3",
@@ -27,6 +29,7 @@ export const news: NewsItem[] = [
     summary: "\"Scaloni has built the most complete Albiceleste squad in 40 years,\" writes our analyst. With Messi, Álvarez and Di María all fit, a third star feels like destiny, not hope.",
     image: "https://images.unsplash.com/photo-1551958219-acbc630c1ea1?w=600&q=80",
     publishedAt: minsAgo(22), isBreaking: false, author: "Gabriele Marcotti", source: "ESPN FC",
+    sourceUrl: "https://www.espn.com/soccer/",
   },
   {
     id: "n4",
@@ -35,6 +38,7 @@ export const news: NewsItem[] = [
     summary: "Manager Southgate confirmed no late fitness worries as England bid to go one better than Euro 2024 on football's biggest stage.",
     image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&q=80",
     publishedAt: minsAgo(45), isBreaking: false, author: "Phil McNulty", source: "BBC Sport",
+    sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
     id: "n5",
@@ -43,6 +47,7 @@ export const news: NewsItem[] = [
     summary: "Japan's high press and rapid transitions neutralised Germany in 2022. Coach Moriyasu has refined the same blueprint — our analyst explains why Yamal could struggle in the heat.",
     image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=600&q=80",
     publishedAt: minsAgo(70), isBreaking: false, author: "Jonathan Wilson", source: "The Guardian",
+    sourceUrl: "https://www.theguardian.com/football",
   },
   {
     id: "n6",
@@ -51,6 +56,7 @@ export const news: NewsItem[] = [
     summary: "Regragui's squad touched down for their first World Cup on North American soil as Morocco open against Germany on June 14.",
     image: "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=600&q=80",
     publishedAt: minsAgo(110), isBreaking: false, author: "Mustapha Azzouz", source: "beIN Sports",
+    sourceUrl: "https://www.bein.com/en/football/",
   },
   {
     id: "n7",
@@ -59,6 +65,7 @@ export const news: NewsItem[] = [
     summary: "The USMNT captain opened up on the pressure and privilege of hosting the tournament for the first time since 1994, insisting the squad are 'ready to make history'.",
     image: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&q=80",
     publishedAt: minsAgo(150), isBreaking: false, author: "Jeff Carlisle", source: "ESPN",
+    sourceUrl: "https://www.espn.com/soccer/",
   },
   {
     id: "n8",
@@ -67,6 +74,7 @@ export const news: NewsItem[] = [
     summary: "We visited all 11 US venues. From the roofless Rose Bowl to the spectacular AT&T Stadium, here is our definitive ranking of every World Cup 2026 stadium.",
     image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80",
     publishedAt: minsAgo(200), isBreaking: false, author: "Daniel Taylor", source: "The Guardian",
+    sourceUrl: "https://www.theguardian.com/football",
   },
   {
     id: "n9",
@@ -75,6 +83,7 @@ export const news: NewsItem[] = [
     summary: "At 41, Cristiano Ronaldo shows no signs of slowing down. Portugal's captain scored twice in training and confirmed he will lead the line in the opening Group F fixture.",
     image: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=600&q=80",
     publishedAt: minsAgo(240), isBreaking: false, author: "Miguel Delaney", source: "The Independent",
+    sourceUrl: "https://www.independent.co.uk/sport/football",
   },
   {
     id: "n10",
@@ -83,6 +92,7 @@ export const news: NewsItem[] = [
     summary: "Luis de la Fuente's camp spent 48 hours dissecting Germany's new 4-2-3-1 system ahead of a potential Group E clash. 'They press like a machine,' a source inside the camp revealed.",
     image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80",
     publishedAt: minsAgo(285), isBreaking: false, author: "Sid Lowe", source: "The Guardian",
+    sourceUrl: "https://www.theguardian.com/football",
   },
   {
     id: "n11",
@@ -91,6 +101,7 @@ export const news: NewsItem[] = [
     summary: "The former Liverpool forward is making his third World Cup appearance and is determined to lead Senegal further than the quarter-finals of 2022.",
     image: "https://images.unsplash.com/photo-1552667466-07770ae110d0?w=600&q=80",
     publishedAt: minsAgo(330), isBreaking: false, author: "Osasu Obayiuwana", source: "BBC Sport",
+    sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
     id: "n12",
@@ -99,6 +110,7 @@ export const news: NewsItem[] = [
     summary: "Canada appear in their first World Cup since 1986 and this time, as co-hosts, they have real quality. Here's how Herdman's side could cause upsets in Group D.",
     image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80",
     publishedAt: minsAgo(390), isBreaking: false, author: "Tom Bogert", source: "The Athletic",
+    sourceUrl: "https://theathletic.com/soccer/",
   },
   {
     id: "n13",
@@ -107,6 +119,7 @@ export const news: NewsItem[] = [
     summary: "The Brazilian Football Confederation confirmed on Saturday that Neymar is fit and has been included in the final 26-man squad, ending speculation about his fitness.",
     image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&q=80",
     publishedAt: minsAgo(420), isBreaking: true, author: "Thiago Jansen", source: "Globo Esporte",
+    sourceUrl: "https://globoesporte.globo.com/futebol/",
   },
   {
     id: "n14",
@@ -115,6 +128,7 @@ export const news: NewsItem[] = [
     summary: "The Tottenham star will captain South Korea at his third World Cup, hoping to guide the Asian giants past the group stage for the first time since 2010.",
     image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80",
     publishedAt: minsAgo(480), isBreaking: false, author: "John Duerden", source: "ESPN",
+    sourceUrl: "https://www.espn.com/soccer/",
   },
   {
     id: "n15",
@@ -123,6 +137,7 @@ export const news: NewsItem[] = [
     summary: "From Maradona's solo run to Goetze's extra-time winner — our panel of analysts debated for hours. Here is the definitive list ahead of the 2026 edition.",
     image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80",
     publishedAt: minsAgo(540), isBreaking: false, author: "Tim Vickery", source: "BBC Sport",
+    sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
     id: "n16",
@@ -131,6 +146,7 @@ export const news: NewsItem[] = [
     summary: "Van Gaal's replacement has assembled a technically gifted Dutch side but Ecuador's South American pace could cause problems in the Los Angeles heat.",
     image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=600&q=80",
     publishedAt: minsAgo(600), isBreaking: false, author: "Michael Cox", source: "The Athletic",
+    sourceUrl: "https://theathletic.com/soccer/",
   },
   {
     id: "n17",
@@ -139,6 +155,7 @@ export const news: NewsItem[] = [
     summary: "For generations, Mexico have been eliminated in the Round of 16. Lozano believes the home support across CONCACAF territory will finally push El Tri past the curse.",
     image: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&q=80",
     publishedAt: minsAgo(660), isBreaking: false, author: "Roger González", source: "CBS Sports",
+    sourceUrl: "https://www.cbssports.com/soccer/",
   },
   {
     id: "n18",
@@ -147,6 +164,7 @@ export const news: NewsItem[] = [
     summary: "FIFA has introduced semi-automated offside technology across all 104 matches. Here's what referees, players and fans can expect from the most technology-heavy World Cup ever.",
     image: "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=600&q=80",
     publishedAt: minsAgo(720), isBreaking: false, author: "Peter Drury", source: "ITV Sport",
+    sourceUrl: "https://www.itv.com/sport",
   },
   {
     id: "n19",
@@ -155,6 +173,7 @@ export const news: NewsItem[] = [
     summary: "Eight analysts, four different predicted finalists. The consensus? This is the most open World Cup since 2002 — and that makes for incredible drama ahead of June 11.",
     image: "https://images.unsplash.com/photo-1551958219-acbc630c1ea1?w=600&q=80",
     publishedAt: minsAgo(800), isBreaking: false, author: "Guillem Balagué", source: "BBC Sport",
+    sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
     id: "n20",
@@ -163,5 +182,6 @@ export const news: NewsItem[] = [
     summary: "A cast of thousands, iconic American artists, and a display celebrating football's global reach — the MetLife Stadium opening ceremony is set to be the biggest in World Cup history.",
     image: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=600&q=80",
     publishedAt: minsAgo(900), isBreaking: false, author: "Keir Radnedge", source: "World Soccer",
+    sourceUrl: "https://worldsoccer.co.uk/",
   },
 ];

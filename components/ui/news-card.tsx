@@ -67,7 +67,14 @@ export function NewsCard({ item }: { item: NewsItem }) {
             {item.source && <span className="font-semibold text-slate-400">{item.source}</span>}
             {item.author && <span>· {item.author}</span>}
           </span>
-          <time dateTime={item.publishedAt}>{relativeTime(item.publishedAt)}</time>
+          <span className="flex items-center gap-2">
+            <time dateTime={item.publishedAt}>{relativeTime(item.publishedAt)}</time>
+            {item.sourceUrl && (
+              <span className="rounded bg-white/[.08] px-1.5 py-0.5 text-[10px] font-semibold text-slate-300">
+                Read →
+              </span>
+            )}
+          </span>
         </div>
       </div>
     </article>
