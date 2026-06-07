@@ -10,7 +10,7 @@ export const news: NewsItem[] = [
     category: "Breaking News",
     summary: "France captain Kylian Mbappé put injury concerns to bed in Friday's training session, completing the full 90 minutes without restrictions as Les Bleus finalise preparations.",
     image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80",
-    publishedAt: minsAgo(8), isBreaking: true, author: "L'Équipe", source: "BBC Sport",
+    publishedAt: minsAgo(8), isBreaking: true, isLogo: false, author: "L'Équipe", source: "BBC Sport",
     sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
@@ -19,7 +19,7 @@ export const news: NewsItem[] = [
     category: "Injury Alert",
     summary: "The Real Madrid winger left the pitch holding his left hamstring with 20 minutes remaining. CBF confirmed he will undergo scans on Sunday — a major worry ahead of Monday's opener.",
     image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&q=80",
-    publishedAt: minsAgo(15), isBreaking: true, author: "Tom Marshall", source: "ESPN FC",
+    publishedAt: minsAgo(15), isBreaking: true, isLogo: false, author: "Tom Marshall", source: "ESPN FC",
     sourceUrl: "https://www.espn.com/soccer/",
   },
   {
@@ -28,7 +28,7 @@ export const news: NewsItem[] = [
     category: "Expert View",
     summary: "\"Scaloni has built the most complete Albiceleste squad in 40 years,\" writes our analyst. With Messi, Álvarez and Di María all fit, a third star feels like destiny, not hope.",
     image: "https://images.unsplash.com/photo-1551958219-acbc630c1ea1?w=600&q=80",
-    publishedAt: minsAgo(22), isBreaking: false, author: "Gabriele Marcotti", source: "ESPN FC",
+    publishedAt: minsAgo(22), isBreaking: false, isLogo: false, author: "Gabriele Marcotti", source: "ESPN FC",
     sourceUrl: "https://www.espn.com/soccer/",
   },
   {
@@ -37,7 +37,7 @@ export const news: NewsItem[] = [
     category: "Team News",
     summary: "Manager Southgate confirmed no late fitness worries as England bid to go one better than Euro 2024 on football's biggest stage.",
     image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&q=80",
-    publishedAt: minsAgo(45), isBreaking: false, author: "Phil McNulty", source: "BBC Sport",
+    publishedAt: minsAgo(45), isBreaking: false, isLogo: false, author: "Phil McNulty", source: "BBC Sport",
     sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
@@ -46,7 +46,7 @@ export const news: NewsItem[] = [
     category: "Tactics",
     summary: "Japan's high press and rapid transitions neutralised Germany in 2022. Coach Moriyasu has refined the same blueprint — our analyst explains why Yamal could struggle in the heat.",
     image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=600&q=80",
-    publishedAt: minsAgo(70), isBreaking: false, author: "Jonathan Wilson", source: "The Guardian",
+    publishedAt: minsAgo(70), isBreaking: false, isLogo: false, author: "Jonathan Wilson", source: "The Guardian",
     sourceUrl: "https://www.theguardian.com/football",
   },
   {
@@ -55,7 +55,7 @@ export const news: NewsItem[] = [
     category: "Team News",
     summary: "Regragui's squad touched down for their first World Cup on North American soil as Morocco open against Germany on June 14.",
     image: "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=600&q=80",
-    publishedAt: minsAgo(110), isBreaking: false, author: "Jonathan Stevenson", source: "BBC Sport",
+    publishedAt: minsAgo(110), isBreaking: false, isLogo: false, author: "Jonathan Stevenson", source: "BBC Sport",
     sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
@@ -64,7 +64,7 @@ export const news: NewsItem[] = [
     category: "Interview",
     summary: "The USMNT captain opened up on the pressure and privilege of hosting the tournament for the first time since 1994, insisting the squad are 'ready to make history'.",
     image: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&q=80",
-    publishedAt: minsAgo(150), isBreaking: false, author: "Jeff Carlisle", source: "ESPN",
+    publishedAt: minsAgo(150), isBreaking: false, isLogo: false, author: "Jeff Carlisle", source: "ESPN",
     sourceUrl: "https://www.espn.com/soccer/",
   },
   {
@@ -73,7 +73,7 @@ export const news: NewsItem[] = [
     category: "Feature",
     summary: "We visited all 11 US venues. From the roofless Rose Bowl to the spectacular AT&T Stadium, here is our definitive ranking of every World Cup 2026 stadium.",
     image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80",
-    publishedAt: minsAgo(200), isBreaking: false, author: "Daniel Taylor", source: "The Guardian",
+    publishedAt: minsAgo(200), isBreaking: false, isLogo: false, author: "Daniel Taylor", source: "The Guardian",
     sourceUrl: "https://www.theguardian.com/football",
   },
   {
@@ -82,7 +82,7 @@ export const news: NewsItem[] = [
     category: "Team News",
     summary: "At 41, Cristiano Ronaldo shows no signs of slowing down. Portugal's captain scored twice in training and confirmed he will lead the line in the opening Group F fixture.",
     image: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=600&q=80",
-    publishedAt: minsAgo(240), isBreaking: false, author: "Miguel Delaney", source: "The Independent",
+    publishedAt: minsAgo(240), isBreaking: false, isLogo: false, author: "Miguel Delaney", source: "The Independent",
     sourceUrl: "https://www.independent.co.uk/sport/football",
   },
   {
@@ -91,7 +91,7 @@ export const news: NewsItem[] = [
     category: "Match Preview",
     summary: "Luis de la Fuente's camp spent 48 hours dissecting Germany's new 4-2-3-1 system ahead of a potential Group E clash. 'They press like a machine,' a source inside the camp revealed.",
     image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80",
-    publishedAt: minsAgo(285), isBreaking: false, author: "Sid Lowe", source: "The Guardian",
+    publishedAt: minsAgo(285), isBreaking: false, isLogo: false, author: "Sid Lowe", source: "The Guardian",
     sourceUrl: "https://www.theguardian.com/football",
   },
   {
@@ -100,7 +100,7 @@ export const news: NewsItem[] = [
     category: "Interview",
     summary: "The former Liverpool forward is making his third World Cup appearance and is determined to lead Senegal further than the quarter-finals of 2022.",
     image: "https://images.unsplash.com/photo-1552667466-07770ae110d0?w=600&q=80",
-    publishedAt: minsAgo(330), isBreaking: false, author: "Osasu Obayiuwana", source: "BBC Sport",
+    publishedAt: minsAgo(330), isBreaking: false, isLogo: false, author: "Osasu Obayiuwana", source: "BBC Sport",
     sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
@@ -109,7 +109,7 @@ export const news: NewsItem[] = [
     category: "Feature",
     summary: "Canada appear in their first World Cup since 1986 and this time, as co-hosts, they have real quality. Here's how Herdman's side could cause upsets in Group D.",
     image: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80",
-    publishedAt: minsAgo(390), isBreaking: false, author: "Tom Bogert", source: "The Athletic",
+    publishedAt: minsAgo(390), isBreaking: false, isLogo: false, author: "Tom Bogert", source: "The Athletic",
     sourceUrl: "https://theathletic.com/soccer/",
   },
   {
@@ -118,7 +118,7 @@ export const news: NewsItem[] = [
     category: "Breaking News",
     summary: "The Brazilian Football Confederation confirmed on Saturday that Neymar is fit and has been included in the final 26-man squad, ending speculation about his fitness.",
     image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&q=80",
-    publishedAt: minsAgo(420), isBreaking: true, author: "Dermot Corrigan", source: "The Athletic",
+    publishedAt: minsAgo(420), isBreaking: true, isLogo: false, author: "Dermot Corrigan", source: "The Athletic",
     sourceUrl: "https://theathletic.com/soccer/",
   },
   {
@@ -127,7 +127,7 @@ export const news: NewsItem[] = [
     category: "Team News",
     summary: "The Tottenham star will captain South Korea at his third World Cup, hoping to guide the Asian giants past the group stage for the first time since 2010.",
     image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80",
-    publishedAt: minsAgo(480), isBreaking: false, author: "John Duerden", source: "ESPN",
+    publishedAt: minsAgo(480), isBreaking: false, isLogo: false, author: "John Duerden", source: "ESPN",
     sourceUrl: "https://www.espn.com/soccer/",
   },
   {
@@ -136,7 +136,7 @@ export const news: NewsItem[] = [
     category: "Feature",
     summary: "From Maradona's solo run to Goetze's extra-time winner — our panel of analysts debated for hours. Here is the definitive list ahead of the 2026 edition.",
     image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80",
-    publishedAt: minsAgo(540), isBreaking: false, author: "Tim Vickery", source: "BBC Sport",
+    publishedAt: minsAgo(540), isBreaking: false, isLogo: false, author: "Tim Vickery", source: "BBC Sport",
     sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
@@ -145,7 +145,7 @@ export const news: NewsItem[] = [
     category: "Match Preview",
     summary: "Van Gaal's replacement has assembled a technically gifted Dutch side but Ecuador's South American pace could cause problems in the Los Angeles heat.",
     image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=600&q=80",
-    publishedAt: minsAgo(600), isBreaking: false, author: "Michael Cox", source: "The Athletic",
+    publishedAt: minsAgo(600), isBreaking: false, isLogo: false, author: "Michael Cox", source: "The Athletic",
     sourceUrl: "https://theathletic.com/soccer/",
   },
   {
@@ -154,7 +154,7 @@ export const news: NewsItem[] = [
     category: "Interview",
     summary: "For generations, Mexico have been eliminated in the Round of 16. Lozano believes the home support across CONCACAF territory will finally push El Tri past the curse.",
     image: "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&q=80",
-    publishedAt: minsAgo(660), isBreaking: false, author: "Roger González", source: "CBS Sports",
+    publishedAt: minsAgo(660), isBreaking: false, isLogo: false, author: "Roger González", source: "CBS Sports",
     sourceUrl: "https://www.cbssports.com/soccer/",
   },
   {
@@ -163,7 +163,7 @@ export const news: NewsItem[] = [
     category: "Feature",
     summary: "FIFA has introduced semi-automated offside technology across all 104 matches. Here's what referees, players and fans can expect from the most technology-heavy World Cup ever.",
     image: "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=600&q=80",
-    publishedAt: minsAgo(720), isBreaking: false, author: "Peter Drury", source: "ITV Sport",
+    publishedAt: minsAgo(720), isBreaking: false, isLogo: false, author: "Peter Drury", source: "ITV Sport",
     sourceUrl: "https://www.itv.com/sport",
   },
   {
@@ -172,7 +172,7 @@ export const news: NewsItem[] = [
     category: "Expert View",
     summary: "Eight analysts, four different predicted finalists. The consensus? This is the most open World Cup since 2002 — and that makes for incredible drama ahead of June 11.",
     image: "https://images.unsplash.com/photo-1551958219-acbc630c1ea1?w=600&q=80",
-    publishedAt: minsAgo(800), isBreaking: false, author: "Guillem Balagué", source: "BBC Sport",
+    publishedAt: minsAgo(800), isBreaking: false, isLogo: false, author: "Guillem Balagué", source: "BBC Sport",
     sourceUrl: "https://www.bbc.co.uk/sport/football",
   },
   {
@@ -181,7 +181,7 @@ export const news: NewsItem[] = [
     category: "Feature",
     summary: "A cast of thousands, iconic American artists, and a display celebrating football's global reach — the MetLife Stadium opening ceremony is set to be the biggest in World Cup history.",
     image: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=600&q=80",
-    publishedAt: minsAgo(900), isBreaking: false, author: "Keir Radnedge", source: "World Soccer",
+    publishedAt: minsAgo(900), isBreaking: false, isLogo: false, author: "Keir Radnedge", source: "World Soccer",
     sourceUrl: "https://worldsoccer.co.uk/",
   },
 ];

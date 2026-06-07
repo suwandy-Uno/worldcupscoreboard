@@ -65,6 +65,7 @@ export type Injury = {
 
 export type NewsItem = {
   id: string;
+  isLogo?: boolean;
   title: string;
   category: string;
   summary: string;
@@ -84,5 +85,4 @@ export type Venue = {
   capacity: string;
   timezone: string;
   matches: number;
-  image: string;
 };

@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/page-header";
 
-export const metadata: Metadata = { title: "World Cup 2026 Bracket", description: "Round of 32 through final bracket placeholder for the expanded tournament format." };
+export const metadata: Metadata = { title: "World Cup 2026 Playoff", description: "Round of 32 through final playoff bracket for the expanded 48-team tournament format." };
 
 const rounds = ["Round of 32", "Round of 16", "Quarterfinal", "Semifinal", "Third Place", "Final"];
 
 export default function BracketPage() {
   return (
     <>
-      <PageHeader title="World Cup 2026 Bracket" description="Knockout bracket layout prepared for live qualification paths once group-stage data is connected." />
+      <PageHeader title="World Cup 2026 Playoff" description="Knockout playoff layout prepared for live qualification paths once group-stage data is connected." />
       <div className="grid gap-4 overflow-x-auto lg:grid-cols-6">
         {rounds.map((round) => (
           <section key={round} className="min-w-[210px] space-y-3">

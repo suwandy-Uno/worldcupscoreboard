@@ -100,38 +100,15 @@ export function VenueCard({ venue }: { venue: Venue }) {
   return (
     <>
       <div className="card overflow-hidden">
-        {/* Stadium photo */}
-        <div className="relative h-44 overflow-hidden">
-          <img
-            src={venue.image}
-            alt={venue.name}
-            className="h-full w-full object-cover"
-            loading="lazy"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src =
-                "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&q=80";
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-          {flagCode && (
-            <div className="absolute right-3 top-3">
-              <img src={`https://flagcdn.com/w40/${flagCode}.png`} alt={venue.country} width={32} height={24} className="rounded shadow" />
-            </div>
-          )}
-          {/* Clickable matches badge */}
-          <button
-            onClick={() => setShowModal(true)}
-            className="absolute bottom-3 right-3 rounded bg-brand/90 px-2 py-0.5 text-xs font-bold text-white hover:bg-brand transition-colors cursor-pointer"
-            title="View matches at this venue"
-          >
-            {venue.matches} matches ↗
-          </button>
-        </div>
-
         {/* Info */}
         <div className="p-4">
-          <h3 className="text-lg font-bold leading-tight">{venue.name}</h3>
-          <p className="mt-0.5 text-sm text-slate-400">{venue.city}, {venue.country}</p>
+          <div className="flex items-start justify-between gap-2 mb-1">
+            <h3 className="text-lg font-bold leading-tight">{venue.name}</h3>
+            {flagCode && (
+              <img src={`https://flagcdn.com/w40/${flagCode}.png`} alt={venue.country} width={28} height={21} className="rounded shadow flex-shrink-0 mt-0.5" />
+            )}
+          </div>
+          <p className="text-sm text-slate-400">{venue.city}, {venue.country}</p>
           <div className="mt-3 grid grid-cols-2 gap-3 text-sm">
             <div>
               <p className="text-xs text-slate-500">Capacity</p>
