@@ -42,7 +42,7 @@ function relativeTime(iso: string): string {
 
 export function NewsCard({ item }: { item: NewsItem }) {
   const badgeClass = CATEGORY_STYLE[item.category] ?? "bg-brand text-white";
-  const bgGradient = SOURCE_BG[item.source] ?? "from-[#1a1f2e] to-[#0d1117]";
+  const bgGradient = (item.source && SOURCE_BG[item.source]) || "from-[#1a1f2e] to-[#0d1117]";
 
   const cardContent = (
     <article className="card overflow-hidden flex flex-col h-full transition-transform hover:-translate-y-0.5 hover:shadow-glow">
