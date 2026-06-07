@@ -1,21 +1,18 @@
-// Cloudflare Pages Function — fetches football news from reputable English-language RSS feeds
+// Cloudflare Pages Function — reputable English-language football RSS feeds
 
 const FEEDS = [
-  { url: "https://feeds.bbci.co.uk/sport/football/rss.xml",  source: "BBC Sport" },
-  { url: "https://www.theguardian.com/football/rss",         source: "The Guardian" },
-  { url: "https://www.skysports.com/rss/12040",              source: "Sky Sports" },
-  { url: "https://www.espn.com/espn/rss/soccer/news",        source: "ESPN FC" },
+  { url: "https://feeds.bbci.co.uk/sport/football/rss.xml",  source: "BBC Sport",     domain: "bbc.co.uk" },
+  { url: "https://www.theguardian.com/football/rss",         source: "The Guardian",  domain: "theguardian.com" },
+  { url: "https://www.skysports.com/rss/12040",              source: "Sky Sports",    domain: "skysports.com" },
+  { url: "https://www.espn.com/espn/rss/soccer/news",        source: "ESPN FC",       domain: "espn.com" },
 ];
 
-// Explicit allowlist of trusted domains — articles from any other domain are dropped.
-// This prevents low-quality, non-English, or unreliable sites from appearing.
+// Only articles from these domains are shown
 const ALLOWED_DOMAINS = new Set([
-  "bbc.co.uk",
-  "bbc.com",
+  "bbc.co.uk", "bbc.com",
   "theguardian.com",
   "skysports.com",
-  "espn.com",
-  "espnfc.com",
+  "espn.com", "espnfc.com",
   "theathletic.com",
   "reuters.com",
   "apnews.com",
@@ -24,51 +21,54 @@ const ALLOWED_DOMAINS = new Set([
   "goal.com",
   "independent.co.uk",
   "telegraph.co.uk",
-  "ft.com",
   "cbssports.com",
   "nbcsports.com",
   "sportingnews.com",
 ]);
 
+// Logo image for each source — served via Clearbit's free logo API
+const SOURCE_LOGOS: Record<string, string> = {
+  "BBC Sport":     "https://logo.clearbit.com/bbc.co.uk",
+  "The Guardian":  "https://logo.clearbit.com/theguardian.com",
+  "Sky Sports":    "https://logo.clearbit.com/skysports.com",
+  "ESPN FC":       "https://logo.clearbit.com/espn.com",
+  "The Athletic":  "https://logo.clearbit.com/theathletic.com",
+  "Reuters":       "https://logo.clearbit.com/reuters.com",
+  "AP News":       "https://logo.clearbit.com/apnews.com",
+  "FIFA":          "https://logo.clearbit.com/fifa.com",
+  "UEFA":          "https://logo.clearbit.com/uefa.com",
+  "Goal.com":      "https://logo.clearbit.com/goal.com",
+  "The Independent": "https://logo.clearbit.com/independent.co.uk",
+  "The Telegraph": "https://logo.clearbit.com/telegraph.co.uk",
+  "CBS Sports":    "https://logo.clearbit.com/cbssports.com",
+  "NBC Sports":    "https://logo.clearbit.com/nbcsports.com",
+  "Sporting News": "https://logo.clearbit.com/sportingnews.com",
+};
+
+function getLogoForSource(source: string, domain?: string): string {
+  if (SOURCE_LOGOS[source]) return SOURCE_LOGOS[source];
+  if (domain) return `https://logo.clearbit.com/${domain}`;
+  return `https://logo.clearbit.com/worldcupscoreboard.com`;
+}
+
 function isAllowedUrl(url: string): boolean {
   try {
     const hostname = new URL(url).hostname.replace(/^www\./, "");
-    // Check exact match or subdomain match (e.g. "sport.bbc.co.uk" → "bbc.co.uk")
     return [...ALLOWED_DOMAINS].some((d) => hostname === d || hostname.endsWith(`.${d}`));
   } catch {
     return false;
   }
 }
 
-// Fallback Unsplash images — only used when an article has no image at all
-const FALLBACK_IMAGES = [
-  "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80",
-  "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&q=80",
-  "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&q=80",
-  "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?w=600&q=80",
-  "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=600&q=80",
-  "https://images.unsplash.com/photo-1551958219-acbc630c1ea1?w=600&q=80",
-  "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&q=80",
-  "https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&q=80",
-  "https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=600&q=80",
-  "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=600&q=80",
-];
-
 function stripHtml(raw: string): string {
   return raw
-    .replace(/<!\[CDATA\[/gi, "")
-    .replace(/\]\]>/g, "")
+    .replace(/<!\[CDATA\[/gi, "").replace(/\]\]>/g, "")
     .replace(/<br\s*\/?>/gi, " ")
     .replace(/<\/?(p|li|ul|ol|div|h[1-6])[^>]*>/gi, " ")
     .replace(/<[^>]+>/g, "")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, " ")
-    .replace(/\s{2,}/g, " ")
-    .trim();
+    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, " ")
+    .replace(/\s{2,}/g, " ").trim();
 }
 
 function extractTag(xml: string, tag: string): string {
@@ -82,19 +82,17 @@ function extractAttr(xml: string, tag: string, attr: string): string {
   return m ? m[1] : "";
 }
 
-function extractImage(block: string): string | null {
-  // 1. <media:content url="..."> — The Guardian, ESPN
+/** Extract image embedded in the RSS item. Returns null if the feed has none. */
+function extractRssImage(block: string): string | null {
+  // 1. <media:content url="..."> — Guardian, ESPN sometimes
   const mc = block.match(/<media:content[^>]+url=["']([^"']+)["'][^>]*>/i);
-  if (mc) {
-    const url = mc[1];
-    if (!url.match(/\.(mp4|webm|ogg|mp3|wav)(\?|$)/i)) return url;
-  }
+  if (mc && !mc[1].match(/\.(mp4|webm|ogg|mp3|wav)(\?|$)/i)) return mc[1];
 
   // 2. <media:thumbnail url="..."> — BBC Sport, Sky Sports
   const mt = block.match(/<media:thumbnail[^>]+url=["']([^"']+)["']/i);
   if (mt) return mt[1];
 
-  // 3. <enclosure url="..." type="image/...">
+  // 3. <enclosure type="image/...">
   const enc = block.match(/<enclosure[^>]+type=["']image[^"']*["'][^>]+url=["']([^"']+)["']/i)
            || block.match(/<enclosure[^>]+url=["']([^"']+)["'][^>]+type=["']image[^"']*["']/i);
   if (enc) return enc[1];
@@ -119,59 +117,54 @@ function badgeFromTitle(title: string): string {
   return "Football News";
 }
 
-function parseRSSItems(xml: string, source: string, fallbackOffset: number) {
+function parseRSSItems(xml: string, source: string, domain: string) {
   const items: Array<{
     id: string; title: string; category: string; summary: string;
-    image: string; publishedAt: string; isBreaking: boolean;
+    image: string; isLogo: boolean; publishedAt: string; isBreaking: boolean;
     sourceUrl: string; source: string;
   }> = [];
 
   const itemRegex = /<item>([\s\S]*?)<\/item>/g;
   let match: RegExpExecArray | null;
-  let i = 0;
 
-  while ((match = itemRegex.exec(xml)) !== null && items.length < 10) {
+  while ((match = itemRegex.exec(xml)) !== null && items.length < 8) {
     const block = match[1];
     const title = stripHtml(extractTag(block, "title"));
-    if (!title) { i++; continue; }
+    if (!title) continue;
 
     const link = extractTag(block, "link") || extractAttr(block, "link", "href");
-
-    // Drop articles that don't come from an allowed domain
-    if (link && !isAllowedUrl(link)) { i++; continue; }
+    if (link && !isAllowedUrl(link)) continue;
 
     const rawDesc = extractTag(block, "description") || extractTag(block, "content:encoded") || "";
     const summary = stripHtml(rawDesc).slice(0, 180) || `Read the full story on ${source}.`;
     const pubDate = extractTag(block, "pubDate") || extractTag(block, "dc:date") || extractTag(block, "published");
-    const image = extractImage(block) ?? FALLBACK_IMAGES[(fallbackOffset + i) % FALLBACK_IMAGES.length];
     const category = badgeFromTitle(title);
-    const isBreaking = category === "Breaking News" || category === "Injury Alert";
+    const rssImage = extractRssImage(block);
 
     items.push({
       id: `rss-${btoa(encodeURIComponent(title)).slice(0, 12)}`,
       title,
       category,
       summary,
-      image,
+      image: rssImage ?? getLogoForSource(source, domain),
+      isLogo: !rssImage,
       publishedAt: pubDate ? new Date(pubDate).toISOString() : new Date().toISOString(),
-      isBreaking,
+      isBreaking: category === "Breaking News" || category === "Injury Alert",
       sourceUrl: link,
       source,
     });
-    i++;
   }
   return items;
 }
 
 export async function onRequestGet() {
   const results = await Promise.allSettled(
-    FEEDS.map(async ({ url, source }, feedIndex) => {
+    FEEDS.map(async ({ url, source, domain }) => {
       const res = await fetch(url, {
         headers: { "User-Agent": "WorldCupScoreboard/1.0 (+https://worldcupscoreboard.com)" },
       });
       if (!res.ok) throw new Error(`${source} returned ${res.status}`);
-      const xml = await res.text();
-      return parseRSSItems(xml, source, feedIndex * 5);
+      return parseRSSItems(await res.text(), source, domain);
     })
   );
 
