@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { Sidebar } from "@/components/layout/sidebar";
+import { TimezoneProvider } from "@/lib/context/timezone-context";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -145,17 +146,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-        <div className="min-h-screen lg:grid lg:grid-cols-[260px_1fr]">
-          <Sidebar />
-          <div className="min-w-0">
-            <Header />
-            <main className="mx-auto w-full max-w-[1500px] px-4 pb-28 pt-5 sm:px-6 lg:px-8">
-              {children}
-            </main>
-            <Footer />
+        <TimezoneProvider>
+          <div className="min-h-screen lg:grid lg:grid-cols-[260px_1fr]">
+            <Sidebar />
+            <div className="min-w-0">
+              <Header />
+              <main className="mx-auto w-full max-w-[1500px] px-4 pb-28 pt-5 sm:px-6 lg:px-8">
+                {children}
+              </main>
+              <Footer />
+            </div>
+            <MobileNav />
           </div>
-          <MobileNav />
-        </div>
+        </TimezoneProvider>
       </body>
     </html>
   );
