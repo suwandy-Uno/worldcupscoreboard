@@ -31,7 +31,7 @@ export function AutoInjuries({ injuries }: { injuries: Injury[] }) {
 }
 
 export function AutoNews({ news }: { news: NewsItem[] }) {
-  const state = useAutoRefresh(news, "/api/news", 90000);
+  const state = useAutoRefresh(news, "/api/news", 90000, true);
   return <><RefreshNote date={state.updatedAt} /><div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">{state.data.map((item) => <NewsCard key={item.id} item={item} />)}</div></>;
 }
 
