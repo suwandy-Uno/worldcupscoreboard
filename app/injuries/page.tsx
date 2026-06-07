@@ -19,7 +19,7 @@ export default async function InjuriesPage() {
   const injuries = await getInjuries();
   return (
     <>
-      <PageHeader title="World Cup 2026 Injuries" description="Injury and suspension tracker with auto-updating timestamps and future provider source fields." />
+      <PageHeader title="World Cup 2026 Injuries" description="Latest injury news and suspension updates for all 48 teams. Check player fitness before every match." />
       <SearchFilterBar placeholder="Filter by player, team, or status..." />
       <AutoInjuries injuries={injuries} />
     </>
