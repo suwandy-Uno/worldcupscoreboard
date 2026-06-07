@@ -5,8 +5,8 @@ const FEEDS = [
   { url: "https://www.theguardian.com/football/rss", source: "The Guardian" },
 ];
 
-// Reliable Unsplash football images — hotlink-free, rotate by index
-const IMAGES = [
+// Fallback Unsplash images — only used when an article has no image at all
+const FALLBACK_IMAGES = [
   "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80",
   "https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&q=80",
   "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&q=80",
@@ -48,6 +48,32 @@ function extractAttr(xml: string, tag: string, attr: string): string {
   return m ? m[1] : "";
 }
 
+function extractImage(block: string): string | null {
+  // 1. <media:content url="..." medium="image"> — used by The Guardian
+  const mc = block.match(/<media:content[^>]+url=["']([^"']+)["'][^>]*>/i);
+  if (mc) {
+    const url = mc[1];
+    // Skip non-image media:content (video, audio)
+    if (!url.match(/\.(mp4|webm|ogg|mp3|wav)(\?|$)/i)) return url;
+  }
+
+  // 2. <media:thumbnail url="..."> — used by BBC Sport
+  const mt = block.match(/<media:thumbnail[^>]+url=["']([^"']+)["']/i);
+  if (mt) return mt[1];
+
+  // 3. <enclosure url="..." type="image/...">
+  const enc = block.match(/<enclosure[^>]+type=["']image[^"']*["'][^>]+url=["']([^"']+)["']/i)
+           || block.match(/<enclosure[^>]+url=["']([^"']+)["'][^>]+type=["']image[^"']*["']/i);
+  if (enc) return enc[1];
+
+  // 4. First <img src="..."> inside description/content HTML
+  const desc = extractTag(block, "description") || extractTag(block, "content:encoded") || "";
+  const img = desc.match(/<img[^>]+src=["']([^"']+)["']/i);
+  if (img) return img[1];
+
+  return null;
+}
+
 function badgeFromTitle(title: string): string {
   const t = title.toLowerCase();
   if (t.includes("injury") || t.includes("injured") || t.includes("ruled out") || t.includes("fitness")) return "Injury Alert";
@@ -60,7 +86,7 @@ function badgeFromTitle(title: string): string {
   return "Football News";
 }
 
-function parseRSSItems(xml: string, source: string, imageOffset: number) {
+function parseRSSItems(xml: string, source: string, fallbackOffset: number) {
   const items: Array<{
     id: string; title: string; category: string; summary: string;
     image: string; publishedAt: string; isBreaking: boolean;
@@ -82,8 +108,8 @@ function parseRSSItems(xml: string, source: string, imageOffset: number) {
     const link = extractTag(block, "link") || extractAttr(block, "link", "href");
     const pubDate = extractTag(block, "pubDate") || extractTag(block, "dc:date") || extractTag(block, "published");
 
-    // Always use our own hosted images — BBC/Guardian hotlink-block external embeds
-    const image = IMAGES[(imageOffset + i) % IMAGES.length];
+    // Use the article's own image; fall back to Unsplash only if none found
+    const image = extractImage(block) ?? FALLBACK_IMAGES[(fallbackOffset + i) % FALLBACK_IMAGES.length];
 
     const category = badgeFromTitle(title);
     const isBreaking = category === "Breaking News" || category === "Injury Alert";
@@ -112,7 +138,7 @@ export async function onRequestGet() {
       });
       if (!res.ok) throw new Error(`${source} returned ${res.status}`);
       const xml = await res.text();
-      return parseRSSItems(xml, source, feedIndex * 5);
+      return parseRSSItems(xml, source, feedIndex * 5); // fallbackOffset staggers Unsplash images per feed
     })
   );
 
