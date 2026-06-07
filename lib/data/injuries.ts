@@ -1,105 +1,127 @@
 import type { Injury } from "@/lib/types";
 
 export const injuries: Injury[] = [
-  // Germany — Group E
-  { id: "i1",  player: "J. Kimmich",      team: "Germany",        group: "Group E", status: "Out",      severity: "Medium", issue: "Muscle injury",           expectedReturn: "Group stage review",  source: "DFB Official",       updatedAt: new Date().toISOString() },
-  { id: "i2",  player: "F. Wirtz",         team: "Germany",        group: "Group E", status: "Doubtful", severity: "Low",    issue: "Knock",                   expectedReturn: "Matchday decision",   source: "DFB Official",       updatedAt: new Date().toISOString() },
+  // ── Group A: Netherlands, Switzerland, Ecuador, Senegal ──────────────────
+  { id: "i1",  player: "V. van Dijk",      team: "Netherlands",    group: "Group A", status: "Fit",      severity: "Low",    issue: "Minor groin (cleared)",   expectedReturn: "Available",           source: "KNVB Official",      updatedAt: new Date().toISOString() },
+  { id: "i2",  player: "M. de Ligt",       team: "Netherlands",    group: "Group A", status: "Doubtful", severity: "Medium", issue: "Back spasms",             expectedReturn: "Group stage review",  source: "KNVB Official",      updatedAt: new Date().toISOString() },
+  { id: "i3",  player: "D. Blind",         team: "Netherlands",    group: "Group A", status: "Out",      severity: "High",   issue: "Heart condition",         expectedReturn: "Tournament doubt",    source: "KNVB Official",      updatedAt: new Date().toISOString() },
+  { id: "i4",  player: "G. Xhaka",         team: "Switzerland",    group: "Group A", status: "Fit",      severity: "Low",    issue: "Knee (monitoring)",       expectedReturn: "Available",           source: "SFV Official",       updatedAt: new Date().toISOString() },
+  { id: "i5",  player: "B. Embolo",        team: "Switzerland",    group: "Group A", status: "Doubtful", severity: "Medium", issue: "Thigh strain",            expectedReturn: "Matchday decision",   source: "SFV Official",       updatedAt: new Date().toISOString() },
+  { id: "i6",  player: "Y. Sommer",        team: "Switzerland",    group: "Group A", status: "Fit",      severity: "Low",    issue: "Finger (taped)",          expectedReturn: "Available",           source: "SFV Official",       updatedAt: new Date().toISOString() },
+  { id: "i7",  player: "E. Valencia",      team: "Ecuador",        group: "Group A", status: "Doubtful", severity: "Medium", issue: "Calf tightness",          expectedReturn: "Matchday decision",   source: "FEF Official",       updatedAt: new Date().toISOString() },
+  { id: "i8",  player: "M. Caicedo",       team: "Ecuador",        group: "Group A", status: "Fit",      severity: "Low",    issue: "Fatigue management",      expectedReturn: "Available",           source: "FEF Official",       updatedAt: new Date().toISOString() },
+  { id: "i9",  player: "S. Mané",          team: "Senegal",        group: "Group A", status: "Fit",      severity: "Low",    issue: "Fitness monitored",       expectedReturn: "Available",           source: "FSF Official",       updatedAt: new Date().toISOString() },
+  { id: "i10", player: "K. Kouyaté",       team: "Senegal",        group: "Group A", status: "Out",      severity: "Medium", issue: "Knee cartilage",          expectedReturn: "Round of 16",         source: "FSF Official",       updatedAt: new Date().toISOString() },
 
-  // Brazil — Group B
-  { id: "i3",  player: "Neymar Jr.",       team: "Brazil",         group: "Group B", status: "Doubtful", severity: "High",   issue: "Knee injury",             expectedReturn: "Matchday decision",   source: "CBF Official",       updatedAt: new Date().toISOString() },
-  { id: "i4",  player: "G. Jesus",         team: "Brazil",         group: "Group B", status: "Out",      severity: "High",   issue: "Hamstring strain",        expectedReturn: "Round of 16",         source: "CBF Official",       updatedAt: new Date().toISOString() },
+  // ── Group B: Brazil, USA, Ghana, Iran ────────────────────────────────────
+  { id: "i11", player: "Neymar Jr.",       team: "Brazil",         group: "Group B", status: "Doubtful", severity: "High",   issue: "Knee injury",             expectedReturn: "Matchday decision",   source: "CBF Official",       updatedAt: new Date().toISOString() },
+  { id: "i12", player: "G. Jesus",         team: "Brazil",         group: "Group B", status: "Out",      severity: "High",   issue: "Hamstring strain",        expectedReturn: "Round of 16",         source: "CBF Official",       updatedAt: new Date().toISOString() },
+  { id: "i13", player: "Casemiro",         team: "Brazil",         group: "Group B", status: "Doubtful", severity: "Medium", issue: "Ankle knock",             expectedReturn: "Matchday decision",   source: "CBF Official",       updatedAt: new Date().toISOString() },
+  { id: "i14", player: "T. Adams",         team: "USA",            group: "Group B", status: "Fit",      severity: "Low",    issue: "Managed minutes",         expectedReturn: "Available",           source: "US Soccer",          updatedAt: new Date().toISOString() },
+  { id: "i15", player: "C. Pulisic",       team: "USA",            group: "Group B", status: "Fit",      severity: "Low",    issue: "Ankle tape (minor)",      expectedReturn: "Available",           source: "US Soccer",          updatedAt: new Date().toISOString() },
+  { id: "i16", player: "G. Reyna",         team: "USA",            group: "Group B", status: "Doubtful", severity: "Medium", issue: "Recurring hamstring",     expectedReturn: "Matchday decision",   source: "US Soccer",          updatedAt: new Date().toISOString() },
+  { id: "i17", player: "T. Weah",          team: "USA",            group: "Group B", status: "Fit",      severity: "Low",    issue: "Minor knock",             expectedReturn: "Available",           source: "US Soccer",          updatedAt: new Date().toISOString() },
+  { id: "i18", player: "T. Partey",        team: "Ghana",          group: "Group B", status: "Out",      severity: "High",   issue: "Hip flexor tear",         expectedReturn: "Group stage review",  source: "GFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i19", player: "M. Kudus",         team: "Ghana",          group: "Group B", status: "Fit",      severity: "Low",    issue: "Precautionary rest",      expectedReturn: "Available",           source: "GFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i20", player: "A. Ansah",         team: "Ghana",          group: "Group B", status: "Doubtful", severity: "Medium", issue: "Quad strain",             expectedReturn: "Group stage review",  source: "GFA Official",       updatedAt: new Date().toISOString() },
 
-  // France — Group D
-  { id: "i5",  player: "P. Pogba",         team: "France",         group: "Group D", status: "Out",      severity: "High",   issue: "Ankle injury",            expectedReturn: "Unknown",             source: "FFF Official",       updatedAt: new Date().toISOString() },
-  { id: "i6",  player: "K. Benzema",       team: "France",         group: "Group D", status: "Out",      severity: "High",   issue: "Thigh tear",              expectedReturn: "Tournament doubt",    source: "FFF Official",       updatedAt: new Date().toISOString() },
-  { id: "i7",  player: "L. Hernandez",     team: "France",         group: "Group D", status: "Doubtful", severity: "Medium", issue: "Knee soreness",           expectedReturn: "Group stage review",  source: "FFF Official",       updatedAt: new Date().toISOString() },
+  // ── Group C: Argentina, Mexico, Poland, Australia ────────────────────────
+  { id: "i21", player: "P. Dybala",        team: "Argentina",      group: "Group C", status: "Doubtful", severity: "Medium", issue: "Thigh concern",           expectedReturn: "Matchday decision",   source: "AFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i22", player: "N. González",      team: "Argentina",      group: "Group C", status: "Out",      severity: "Medium", issue: "Calf strain",             expectedReturn: "Group stage review",  source: "AFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i23", player: "L. Martínez",      team: "Argentina",      group: "Group C", status: "Fit",      severity: "Low",    issue: "Rest after Copa",         expectedReturn: "Available",           source: "AFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i24", player: "R. Jiménez",       team: "Mexico",         group: "Group C", status: "Doubtful", severity: "High",   issue: "Groin strain",            expectedReturn: "Matchday decision",   source: "FMF Official",       updatedAt: new Date().toISOString() },
+  { id: "i25", player: "H. Lozano",        team: "Mexico",         group: "Group C", status: "Fit",      severity: "Low",    issue: "Shoulder (monitoring)",   expectedReturn: "Available",           source: "FMF Official",       updatedAt: new Date().toISOString() },
+  { id: "i26", player: "E. Álvarez",       team: "Mexico",         group: "Group C", status: "Out",      severity: "Medium", issue: "Ankle ligament",          expectedReturn: "Round of 16",         source: "FMF Official",       updatedAt: new Date().toISOString() },
+  { id: "i27", player: "R. Lewandowski",   team: "Poland",         group: "Group C", status: "Fit",      severity: "Low",    issue: "Minor rib knock",         expectedReturn: "Available",           source: "PZPN Official",      updatedAt: new Date().toISOString() },
+  { id: "i28", player: "P. Zieliński",     team: "Poland",         group: "Group C", status: "Out",      severity: "High",   issue: "Knee surgery",            expectedReturn: "Tournament doubt",    source: "PZPN Official",      updatedAt: new Date().toISOString() },
+  { id: "i29", player: "M. Leckie",        team: "Australia",      group: "Group C", status: "Doubtful", severity: "Medium", issue: "Hamstring tightness",     expectedReturn: "Group stage review",  source: "Football Australia", updatedAt: new Date().toISOString() },
+  { id: "i30", player: "A. Hrustic",       team: "Australia",      group: "Group C", status: "Out",      severity: "Medium", issue: "Calf tear",               expectedReturn: "Round of 16",         source: "Football Australia", updatedAt: new Date().toISOString() },
 
-  // England — Group G
-  { id: "i8",  player: "R. James",         team: "England",        group: "Group G", status: "Out",      severity: "High",   issue: "Hamstring",               expectedReturn: "Quarterfinal",        source: "FA Official",        updatedAt: new Date().toISOString() },
-  { id: "i9",  player: "B. Saka",          team: "England",        group: "Group G", status: "Fit",      severity: "Low",    issue: "Minor knock (cleared)",   expectedReturn: "Available",           source: "FA Official",        updatedAt: new Date().toISOString() },
+  // ── Group D: France, Uruguay, Poland, Denmark ────────────────────────────
+  { id: "i31", player: "P. Pogba",         team: "France",         group: "Group D", status: "Out",      severity: "High",   issue: "Ankle injury",            expectedReturn: "Unknown",             source: "FFF Official",       updatedAt: new Date().toISOString() },
+  { id: "i32", player: "K. Benzema",       team: "France",         group: "Group D", status: "Out",      severity: "High",   issue: "Thigh tear",              expectedReturn: "Tournament doubt",    source: "FFF Official",       updatedAt: new Date().toISOString() },
+  { id: "i33", player: "L. Hernandez",     team: "France",         group: "Group D", status: "Doubtful", severity: "Medium", issue: "Knee soreness",           expectedReturn: "Group stage review",  source: "FFF Official",       updatedAt: new Date().toISOString() },
+  { id: "i34", player: "O. Giroud",        team: "France",         group: "Group D", status: "Fit",      severity: "Low",    issue: "Fitness programme",       expectedReturn: "Available",           source: "FFF Official",       updatedAt: new Date().toISOString() },
+  { id: "i35", player: "D. Núñez",         team: "Uruguay",        group: "Group D", status: "Doubtful", severity: "Medium", issue: "Ankle knock",             expectedReturn: "Matchday decision",   source: "AUF Official",       updatedAt: new Date().toISOString() },
+  { id: "i36", player: "F. Valverde",      team: "Uruguay",        group: "Group D", status: "Fit",      severity: "Low",    issue: "Fatigue management",      expectedReturn: "Available",           source: "AUF Official",       updatedAt: new Date().toISOString() },
+  { id: "i37", player: "L. Suárez",        team: "Uruguay",        group: "Group D", status: "Doubtful", severity: "High",   issue: "Knee (chronic)",          expectedReturn: "Matchday decision",   source: "AUF Official",       updatedAt: new Date().toISOString() },
+  { id: "i38", player: "C. Eriksen",       team: "Denmark",        group: "Group D", status: "Fit",      severity: "Low",    issue: "Precautionary rest",      expectedReturn: "Available",           source: "DBU Official",       updatedAt: new Date().toISOString() },
+  { id: "i39", player: "M. Hjulmand",      team: "Denmark",        group: "Group D", status: "Doubtful", severity: "Medium", issue: "Thigh tightness",         expectedReturn: "Matchday decision",   source: "DBU Official",       updatedAt: new Date().toISOString() },
+  { id: "i40", player: "A. Højlund",       team: "Denmark",        group: "Group D", status: "Out",      severity: "Medium", issue: "Back injury",             expectedReturn: "Group stage review",  source: "DBU Official",       updatedAt: new Date().toISOString() },
 
-  // Spain — Group F
-  { id: "i10", player: "G. Ramos",         team: "Spain",          group: "Group F", status: "Fit",      severity: "Low",    issue: "Precautionary rest",      expectedReturn: "Available",           source: "RFEF Official",      updatedAt: new Date().toISOString() },
-  { id: "i11", player: "D. Carvajal",      team: "Spain",          group: "Group F", status: "Out",      severity: "High",   issue: "Knee ligament",           expectedReturn: "Tournament doubt",    source: "RFEF Official",      updatedAt: new Date().toISOString() },
+  // ── Group E: Germany, Japan, Croatia, Costa Rica ─────────────────────────
+  { id: "i41", player: "J. Kimmich",       team: "Germany",        group: "Group E", status: "Out",      severity: "Medium", issue: "Muscle injury",           expectedReturn: "Group stage review",  source: "DFB Official",       updatedAt: new Date().toISOString() },
+  { id: "i42", player: "F. Wirtz",         team: "Germany",        group: "Group E", status: "Doubtful", severity: "Low",    issue: "Knock",                   expectedReturn: "Matchday decision",   source: "DFB Official",       updatedAt: new Date().toISOString() },
+  { id: "i43", player: "T. Müller",        team: "Germany",        group: "Group E", status: "Fit",      severity: "Low",    issue: "Managed workload",        expectedReturn: "Available",           source: "DFB Official",       updatedAt: new Date().toISOString() },
+  { id: "i44", player: "D. Ito",           team: "Japan",          group: "Group E", status: "Doubtful", severity: "Medium", issue: "Ankle sprain",            expectedReturn: "Matchday decision",   source: "JFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i45", player: "W. Endo",          team: "Japan",          group: "Group E", status: "Fit",      severity: "Low",    issue: "Rib knock (cleared)",     expectedReturn: "Available",           source: "JFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i46", player: "H. Mitoma",        team: "Japan",          group: "Group E", status: "Doubtful", severity: "Medium", issue: "Shoulder concern",        expectedReturn: "Group stage review",  source: "JFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i47", player: "L. Modrić",        team: "Croatia",        group: "Group E", status: "Fit",      severity: "Low",    issue: "Managed workload",        expectedReturn: "Available",           source: "HNS Official",       updatedAt: new Date().toISOString() },
+  { id: "i48", player: "I. Gvardiol",      team: "Croatia",        group: "Group E", status: "Doubtful", severity: "Medium", issue: "Groin strain",            expectedReturn: "Matchday decision",   source: "HNS Official",       updatedAt: new Date().toISOString() },
+  { id: "i49", player: "M. Brozović",      team: "Croatia",        group: "Group E", status: "Out",      severity: "High",   issue: "Knee cartilage",          expectedReturn: "Tournament doubt",    source: "HNS Official",       updatedAt: new Date().toISOString() },
+  { id: "i50", player: "K. Fuller",        team: "Costa Rica",     group: "Group E", status: "Doubtful", severity: "Medium", issue: "Hamstring",               expectedReturn: "Matchday decision",   source: "FEDEFUTBOL",         updatedAt: new Date().toISOString() },
 
-  // Argentina — Group C
-  { id: "i12", player: "P. Dybala",        team: "Argentina",      group: "Group C", status: "Doubtful", severity: "Medium", issue: "Thigh concern",           expectedReturn: "Matchday decision",   source: "AFA Official",       updatedAt: new Date().toISOString() },
-  { id: "i13", player: "N. González",      team: "Argentina",      group: "Group C", status: "Out",      severity: "Medium", issue: "Calf strain",             expectedReturn: "Group stage review",  source: "AFA Official",       updatedAt: new Date().toISOString() },
+  // ── Group F: Spain, Belgium, Serbia, Cameroon ────────────────────────────
+  { id: "i51", player: "D. Carvajal",      team: "Spain",          group: "Group F", status: "Out",      severity: "High",   issue: "Knee ligament",           expectedReturn: "Tournament doubt",    source: "RFEF Official",      updatedAt: new Date().toISOString() },
+  { id: "i52", player: "G. Ramos",         team: "Spain",          group: "Group F", status: "Fit",      severity: "Low",    issue: "Precautionary rest",      expectedReturn: "Available",           source: "RFEF Official",      updatedAt: new Date().toISOString() },
+  { id: "i53", player: "P. Torres",        team: "Spain",          group: "Group F", status: "Doubtful", severity: "Medium", issue: "Rib knock",               expectedReturn: "Matchday decision",   source: "RFEF Official",      updatedAt: new Date().toISOString() },
+  { id: "i54", player: "K. De Bruyne",     team: "Belgium",        group: "Group F", status: "Doubtful", severity: "High",   issue: "Hamstring concern",       expectedReturn: "Matchday decision",   source: "RBFA Official",      updatedAt: new Date().toISOString() },
+  { id: "i55", player: "R. Lukaku",        team: "Belgium",        group: "Group F", status: "Fit",      severity: "Low",    issue: "Fitness programme",       expectedReturn: "Available",           source: "RBFA Official",      updatedAt: new Date().toISOString() },
+  { id: "i56", player: "T. Hazard",        team: "Belgium",        group: "Group F", status: "Out",      severity: "High",   issue: "Ankle ligament",          expectedReturn: "Tournament doubt",    source: "RBFA Official",      updatedAt: new Date().toISOString() },
+  { id: "i57", player: "D. Vlahović",      team: "Serbia",         group: "Group F", status: "Doubtful", severity: "Medium", issue: "Groin discomfort",        expectedReturn: "Matchday decision",   source: "FSS Official",       updatedAt: new Date().toISOString() },
+  { id: "i58", player: "A. Mitrović",      team: "Serbia",         group: "Group F", status: "Out",      severity: "High",   issue: "Knee operation",          expectedReturn: "Tournament doubt",    source: "FSS Official",       updatedAt: new Date().toISOString() },
+  { id: "i59", player: "V. Aboubakar",     team: "Cameroon",       group: "Group F", status: "Fit",      severity: "Low",    issue: "Fitness check",           expectedReturn: "Available",           source: "FECAFOOT",           updatedAt: new Date().toISOString() },
+  { id: "i60", player: "A. Onana",         team: "Cameroon",       group: "Group F", status: "Fit",      severity: "Low",    issue: "Wrist monitoring",        expectedReturn: "Available",           source: "FECAFOOT",           updatedAt: new Date().toISOString() },
 
-  // Portugal — Group H
-  { id: "i14", player: "D. Jota",          team: "Portugal",       group: "Group H", status: "Out",      severity: "High",   issue: "Knee surgery",            expectedReturn: "Tournament doubt",    source: "FPF Official",       updatedAt: new Date().toISOString() },
-  { id: "i15", player: "N. Mendes",        team: "Portugal",       group: "Group H", status: "Doubtful", severity: "Medium", issue: "Muscle fatigue",          expectedReturn: "Matchday decision",   source: "FPF Official",       updatedAt: new Date().toISOString() },
+  // ── Group G: England, Italy, Iran, Wales ─────────────────────────────────
+  { id: "i61", player: "R. James",         team: "England",        group: "Group G", status: "Out",      severity: "High",   issue: "Hamstring",               expectedReturn: "Quarterfinal",        source: "FA Official",        updatedAt: new Date().toISOString() },
+  { id: "i62", player: "B. Saka",          team: "England",        group: "Group G", status: "Fit",      severity: "Low",    issue: "Minor knock (cleared)",   expectedReturn: "Available",           source: "FA Official",        updatedAt: new Date().toISOString() },
+  { id: "i63", player: "J. Bellingham",    team: "England",        group: "Group G", status: "Fit",      severity: "Low",    issue: "Fatigue management",      expectedReturn: "Available",           source: "FA Official",        updatedAt: new Date().toISOString() },
+  { id: "i64", player: "K. Walker",        team: "England",        group: "Group G", status: "Doubtful", severity: "Medium", issue: "Groin tightness",         expectedReturn: "Matchday decision",   source: "FA Official",        updatedAt: new Date().toISOString() },
+  { id: "i65", player: "G. Donnarumma",    team: "Italy",          group: "Group G", status: "Fit",      severity: "Low",    issue: "Minor hand injury",       expectedReturn: "Available",           source: "FIGC Official",      updatedAt: new Date().toISOString() },
+  { id: "i66", player: "F. Chiesa",        team: "Italy",          group: "Group G", status: "Out",      severity: "High",   issue: "ACL recovery",            expectedReturn: "Tournament doubt",    source: "FIGC Official",      updatedAt: new Date().toISOString() },
+  { id: "i67", player: "M. Verratti",      team: "Italy",          group: "Group G", status: "Out",      severity: "High",   issue: "Hip surgery",             expectedReturn: "Tournament doubt",    source: "FIGC Official",      updatedAt: new Date().toISOString() },
+  { id: "i68", player: "S. Azmoun",        team: "Iran",           group: "Group G", status: "Doubtful", severity: "Medium", issue: "Calf concern",            expectedReturn: "Matchday decision",   source: "FFIRI Official",     updatedAt: new Date().toISOString() },
+  { id: "i69", player: "G. Bale",          team: "Wales",          group: "Group G", status: "Doubtful", severity: "High",   issue: "Hamstring (chronic)",     expectedReturn: "Matchday decision",   source: "FAW Official",       updatedAt: new Date().toISOString() },
+  { id: "i70", player: "A. Ramsey",        team: "Wales",          group: "Group G", status: "Out",      severity: "High",   issue: "Muscle tear",             expectedReturn: "Tournament doubt",    source: "FAW Official",       updatedAt: new Date().toISOString() },
 
-  // Netherlands — Group A
-  { id: "i16", player: "V. van Dijk",      team: "Netherlands",    group: "Group A", status: "Fit",      severity: "Low",    issue: "Minor groin (cleared)",   expectedReturn: "Available",           source: "KNVB Official",      updatedAt: new Date().toISOString() },
-  { id: "i17", player: "M. de Ligt",       team: "Netherlands",    group: "Group A", status: "Doubtful", severity: "Medium", issue: "Back spasms",             expectedReturn: "Group stage review",  source: "KNVB Official",      updatedAt: new Date().toISOString() },
+  // ── Group H: Portugal, Korea Republic, Ghana (moved), Japan (moved) ──────
+  { id: "i71", player: "D. Jota",          team: "Portugal",       group: "Group H", status: "Out",      severity: "High",   issue: "Knee surgery",            expectedReturn: "Tournament doubt",    source: "FPF Official",       updatedAt: new Date().toISOString() },
+  { id: "i72", player: "N. Mendes",        team: "Portugal",       group: "Group H", status: "Doubtful", severity: "Medium", issue: "Muscle fatigue",          expectedReturn: "Matchday decision",   source: "FPF Official",       updatedAt: new Date().toISOString() },
+  { id: "i73", player: "J. Cancelo",       team: "Portugal",       group: "Group H", status: "Fit",      severity: "Low",    issue: "Ankle (monitoring)",      expectedReturn: "Available",           source: "FPF Official",       updatedAt: new Date().toISOString() },
+  { id: "i74", player: "H. Son",           team: "Korea Republic", group: "Group H", status: "Fit",      severity: "Low",    issue: "Facial (healed)",         expectedReturn: "Available",           source: "KFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i75", player: "H. Hwang",         team: "Korea Republic", group: "Group H", status: "Doubtful", severity: "Medium", issue: "Knee soreness",           expectedReturn: "Matchday decision",   source: "KFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i76", player: "I. Kwon",          team: "Korea Republic", group: "Group H", status: "Out",      severity: "Medium", issue: "Thigh strain",            expectedReturn: "Group stage review",  source: "KFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i77", player: "S. Al-Dawsari",    team: "Saudi Arabia",   group: "Group H", status: "Fit",      severity: "Low",    issue: "Precautionary rest",      expectedReturn: "Available",           source: "SAFF Official",      updatedAt: new Date().toISOString() },
+  { id: "i78", player: "M. Al-Burayk",     team: "Saudi Arabia",   group: "Group H", status: "Doubtful", severity: "Medium", issue: "Hamstring",               expectedReturn: "Matchday decision",   source: "SAFF Official",      updatedAt: new Date().toISOString() },
 
-  // USA — Group B
-  { id: "i18", player: "T. Adams",         team: "USA",            group: "Group B", status: "Fit",      severity: "Low",    issue: "Managed minutes",         expectedReturn: "Available",           source: "US Soccer",          updatedAt: new Date().toISOString() },
-  { id: "i19", player: "C. Pulisic",       team: "USA",            group: "Group B", status: "Fit",      severity: "Low",    issue: "Ankle tape (minor)",      expectedReturn: "Available",           source: "US Soccer",          updatedAt: new Date().toISOString() },
-  { id: "i20", player: "G. Reyna",         team: "USA",            group: "Group B", status: "Doubtful", severity: "Medium", issue: "Recurring hamstring",     expectedReturn: "Matchday decision",   source: "US Soccer",          updatedAt: new Date().toISOString() },
+  // ── Group I: Colombia, Ecuador (moved), Tunisia, Ivory Coast ─────────────
+  { id: "i79", player: "L. Díaz",          team: "Colombia",       group: "Group I", status: "Fit",      severity: "Low",    issue: "Shoulder (cleared)",      expectedReturn: "Available",           source: "FCF Official",       updatedAt: new Date().toISOString() },
+  { id: "i80", player: "J. Cuadrado",      team: "Colombia",       group: "Group I", status: "Out",      severity: "High",   issue: "Knee ligament",           expectedReturn: "Tournament doubt",    source: "FCF Official",       updatedAt: new Date().toISOString() },
+  { id: "i81", player: "R. Falcao",        team: "Colombia",       group: "Group I", status: "Out",      severity: "High",   issue: "Knee (chronic)",          expectedReturn: "Tournament doubt",    source: "FCF Official",       updatedAt: new Date().toISOString() },
+  { id: "i82", player: "H. Msakni",        team: "Tunisia",        group: "Group I", status: "Doubtful", severity: "Medium", issue: "Ankle sprain",            expectedReturn: "Matchday decision",   source: "FTF Official",       updatedAt: new Date().toISOString() },
+  { id: "i83", player: "W. Khazri",        team: "Tunisia",        group: "Group I", status: "Fit",      severity: "Low",    issue: "Minor knock",             expectedReturn: "Available",           source: "FTF Official",       updatedAt: new Date().toISOString() },
+  { id: "i84", player: "S. Haller",        team: "Ivory Coast",    group: "Group I", status: "Fit",      severity: "Low",    issue: "Cancer recovery (cleared)",expectedReturn: "Available",           source: "FIF Official",       updatedAt: new Date().toISOString() },
+  { id: "i85", player: "F. Koné",          team: "Ivory Coast",    group: "Group I", status: "Out",      severity: "Medium", issue: "Quad injury",             expectedReturn: "Group stage review",  source: "FIF Official",       updatedAt: new Date().toISOString() },
 
-  // Morocco — Group J
-  { id: "i21", player: "H. Ziyech",        team: "Morocco",        group: "Group J", status: "Fit",      severity: "Low",    issue: "Shoulder (cleared)",      expectedReturn: "Available",           source: "FRMF Official",      updatedAt: new Date().toISOString() },
-  { id: "i22", player: "N. Mazraoui",      team: "Morocco",        group: "Group J", status: "Out",      severity: "Medium", issue: "Hip flexor",              expectedReturn: "Group stage review",  source: "FRMF Official",      updatedAt: new Date().toISOString() },
+  // ── Group J: Morocco, Australia, Croatia (moved) ─────────────────────────
+  { id: "i86", player: "H. Ziyech",        team: "Morocco",        group: "Group J", status: "Fit",      severity: "Low",    issue: "Shoulder (cleared)",      expectedReturn: "Available",           source: "FRMF Official",      updatedAt: new Date().toISOString() },
+  { id: "i87", player: "N. Mazraoui",      team: "Morocco",        group: "Group J", status: "Out",      severity: "Medium", issue: "Hip flexor",              expectedReturn: "Group stage review",  source: "FRMF Official",      updatedAt: new Date().toISOString() },
+  { id: "i88", player: "A. Ounahi",        team: "Morocco",        group: "Group J", status: "Doubtful", severity: "Low",    issue: "Ankle monitoring",        expectedReturn: "Matchday decision",   source: "FRMF Official",      updatedAt: new Date().toISOString() },
 
-  // Japan — Group E
-  { id: "i23", player: "D. Ito",           team: "Japan",          group: "Group E", status: "Doubtful", severity: "Medium", issue: "Ankle sprain",            expectedReturn: "Matchday decision",   source: "JFA Official",       updatedAt: new Date().toISOString() },
-  { id: "i24", player: "W. Endo",          team: "Japan",          group: "Group E", status: "Fit",      severity: "Low",    issue: "Rib knock (cleared)",     expectedReturn: "Available",           source: "JFA Official",       updatedAt: new Date().toISOString() },
+  // ── Group K: Mexico (host), Canada (host), Saudi Arabia (moved) ──────────
+  { id: "i89", player: "A. Davies",        team: "Canada",         group: "Group K", status: "Fit",      severity: "Low",    issue: "Precautionary rest",      expectedReturn: "Available",           source: "Canada Soccer",      updatedAt: new Date().toISOString() },
+  { id: "i90", player: "J. David",         team: "Canada",         group: "Group K", status: "Doubtful", severity: "Medium", issue: "Quad tightness",          expectedReturn: "Group stage review",  source: "Canada Soccer",      updatedAt: new Date().toISOString() },
+  { id: "i91", player: "A. Larin",         team: "Canada",         group: "Group K", status: "Out",      severity: "Medium", issue: "Knee cartilage",          expectedReturn: "Round of 16",         source: "Canada Soccer",      updatedAt: new Date().toISOString() },
+  { id: "i92", player: "S. Piette",        team: "Canada",         group: "Group K", status: "Fit",      severity: "Low",    issue: "Ankle tape (minor)",      expectedReturn: "Available",           source: "Canada Soccer",      updatedAt: new Date().toISOString() },
 
-  // Mexico — Group K
-  { id: "i25", player: "H. Lozano",        team: "Mexico",         group: "Group K", status: "Fit",      severity: "Low",    issue: "Shoulder (monitoring)",   expectedReturn: "Available",           source: "FMF Official",       updatedAt: new Date().toISOString() },
-  { id: "i26", player: "R. Jiménez",       team: "Mexico",         group: "Group K", status: "Doubtful", severity: "High",   issue: "Groin strain",            expectedReturn: "Matchday decision",   source: "FMF Official",       updatedAt: new Date().toISOString() },
-
-  // Canada — Group L
-  { id: "i27", player: "A. Davies",        team: "Canada",         group: "Group L", status: "Fit",      severity: "Low",    issue: "Precautionary rest",      expectedReturn: "Available",           source: "Canada Soccer",      updatedAt: new Date().toISOString() },
-  { id: "i28", player: "J. David",         team: "Canada",         group: "Group L", status: "Doubtful", severity: "Medium", issue: "Quad tightness",          expectedReturn: "Group stage review",  source: "Canada Soccer",      updatedAt: new Date().toISOString() },
-
-  // Senegal — Group C
-  { id: "i29", player: "S. Mané",          team: "Senegal",        group: "Group C", status: "Fit",      severity: "Low",    issue: "Fitness monitored",       expectedReturn: "Available",           source: "FSF Official",       updatedAt: new Date().toISOString() },
-
-  // Korea Republic — Group H
-  { id: "i30", player: "H. Son",           team: "Korea Republic", group: "Group H", status: "Fit",      severity: "Low",    issue: "Facial (healed)",         expectedReturn: "Available",           source: "KFA Official",       updatedAt: new Date().toISOString() },
-  { id: "i31", player: "H. Hwang",         team: "Korea Republic", group: "Group H", status: "Doubtful", severity: "Medium", issue: "Knee soreness",           expectedReturn: "Matchday decision",   source: "KFA Official",       updatedAt: new Date().toISOString() },
-
-  // Italy — Group G
-  { id: "i32", player: "G. Donnarumma",    team: "Italy",          group: "Group G", status: "Fit",      severity: "Low",    issue: "Minor hand injury",       expectedReturn: "Available",           source: "FIGC Official",      updatedAt: new Date().toISOString() },
-  { id: "i33", player: "F. Chiesa",        team: "Italy",          group: "Group G", status: "Out",      severity: "High",   issue: "ACL recovery",            expectedReturn: "Tournament doubt",    source: "FIGC Official",      updatedAt: new Date().toISOString() },
-
-  // Belgium — Group F
-  { id: "i34", player: "K. De Bruyne",     team: "Belgium",        group: "Group F", status: "Doubtful", severity: "High",   issue: "Hamstring concern",       expectedReturn: "Matchday decision",   source: "RBFA Official",      updatedAt: new Date().toISOString() },
-  { id: "i35", player: "R. Lukaku",        team: "Belgium",        group: "Group F", status: "Fit",      severity: "Low",    issue: "Fitness programme",       expectedReturn: "Available",           source: "RBFA Official",      updatedAt: new Date().toISOString() },
-
-  // Uruguay — Group D
-  { id: "i36", player: "D. Núñez",         team: "Uruguay",        group: "Group D", status: "Doubtful", severity: "Medium", issue: "Ankle knock",             expectedReturn: "Matchday decision",   source: "AUF Official",       updatedAt: new Date().toISOString() },
-  { id: "i37", player: "F. Valverde",      team: "Uruguay",        group: "Group D", status: "Fit",      severity: "Low",    issue: "Fatigue management",      expectedReturn: "Available",           source: "AUF Official",       updatedAt: new Date().toISOString() },
-
-  // Colombia — Group I
-  { id: "i38", player: "L. Díaz",          team: "Colombia",       group: "Group I", status: "Fit",      severity: "Low",    issue: "Shoulder (cleared)",      expectedReturn: "Available",           source: "FCF Official",       updatedAt: new Date().toISOString() },
-  { id: "i39", player: "J. Cuadrado",      team: "Colombia",       group: "Group I", status: "Out",      severity: "High",   issue: "Knee ligament",           expectedReturn: "Tournament doubt",    source: "FCF Official",       updatedAt: new Date().toISOString() },
-
-  // Australia — Group J
-  { id: "i40", player: "M. Leckie",        team: "Australia",      group: "Group J", status: "Doubtful", severity: "Medium", issue: "Hamstring tightness",     expectedReturn: "Group stage review",  source: "Football Australia", updatedAt: new Date().toISOString() },
-  { id: "i41", player: "A. Hrustic",       team: "Australia",      group: "Group J", status: "Out",      severity: "Medium", issue: "Calf tear",               expectedReturn: "Round of 16",         source: "Football Australia", updatedAt: new Date().toISOString() },
-
-  // Croatia — Group E
-  { id: "i42", player: "L. Modrić",        team: "Croatia",        group: "Group E", status: "Fit",      severity: "Low",    issue: "Managed workload",        expectedReturn: "Available",           source: "HNS Official",       updatedAt: new Date().toISOString() },
-  { id: "i43", player: "I. Gvardiol",      team: "Croatia",        group: "Group E", status: "Doubtful", severity: "Medium", issue: "Groin strain",            expectedReturn: "Matchday decision",   source: "HNS Official",       updatedAt: new Date().toISOString() },
-
-  // Switzerland — Group A
-  { id: "i44", player: "G. Xhaka",         team: "Switzerland",    group: "Group A", status: "Fit",      severity: "Low",    issue: "Knee (monitoring)",       expectedReturn: "Available",           source: "SFV Official",       updatedAt: new Date().toISOString() },
-  { id: "i45", player: "B. Embolo",        team: "Switzerland",    group: "Group A", status: "Doubtful", severity: "Medium", issue: "Thigh strain",            expectedReturn: "Matchday decision",   source: "SFV Official",       updatedAt: new Date().toISOString() },
-
-  // Poland — Group D
-  { id: "i46", player: "R. Lewandowski",   team: "Poland",         group: "Group D", status: "Fit",      severity: "Low",    issue: "Minor rib knock",         expectedReturn: "Available",           source: "PZPN Official",      updatedAt: new Date().toISOString() },
-  { id: "i47", player: "P. Zieliński",     team: "Poland",         group: "Group D", status: "Out",      severity: "High",   issue: "Knee surgery",            expectedReturn: "Tournament doubt",    source: "PZPN Official",      updatedAt: new Date().toISOString() },
-
-  // Ecuador — Group A
-  { id: "i48", player: "E. Valencia",      team: "Ecuador",        group: "Group A", status: "Doubtful", severity: "Medium", issue: "Calf tightness",          expectedReturn: "Matchday decision",   source: "FEF Official",       updatedAt: new Date().toISOString() },
-
-  // Saudi Arabia — Group K
-  { id: "i49", player: "S. Al-Dawsari",    team: "Saudi Arabia",   group: "Group K", status: "Fit",      severity: "Low",    issue: "Precautionary rest",      expectedReturn: "Available",           source: "SAFF Official",      updatedAt: new Date().toISOString() },
-
-  // Ghana — Group B
-  { id: "i50", player: "T. Partey",        team: "Ghana",          group: "Group B", status: "Out",      severity: "High",   issue: "Hip flexor tear",         expectedReturn: "Group stage review",  source: "GFA Official",       updatedAt: new Date().toISOString() },
+  // ── Group L: USA (host 2), remaining teams ───────────────────────────────
+  { id: "i93", player: "W. McKennie",      team: "USA",            group: "Group L", status: "Doubtful", severity: "Medium", issue: "Foot fracture (healed)",  expectedReturn: "Matchday decision",   source: "US Soccer",          updatedAt: new Date().toISOString() },
+  { id: "i94", player: "M. Acuña",         team: "Argentina",      group: "Group L", status: "Out",      severity: "High",   issue: "ACL tear",                expectedReturn: "Tournament doubt",    source: "AFA Official",       updatedAt: new Date().toISOString() },
+  { id: "i95", player: "O. Dembélé",       team: "France",         group: "Group L", status: "Fit",      severity: "Low",    issue: "Hamstring (monitoring)",  expectedReturn: "Available",           source: "FFF Official",       updatedAt: new Date().toISOString() },
+  { id: "i96", player: "P. Schick",        team: "Czech Republic", group: "Group L", status: "Doubtful", severity: "Medium", issue: "Achilles soreness",       expectedReturn: "Matchday decision",   source: "FAČR Official",      updatedAt: new Date().toISOString() },
+  { id: "i97", player: "T. Soucek",        team: "Czech Republic", group: "Group L", status: "Fit",      severity: "Low",    issue: "Fitness programme",       expectedReturn: "Available",           source: "FAČR Official",      updatedAt: new Date().toISOString() },
+  { id: "i98", player: "E. Osimhen",       team: "Nigeria",        group: "Group L", status: "Doubtful", severity: "High",   issue: "Hamstring grade 2",       expectedReturn: "Matchday decision",   source: "NFF Official",       updatedAt: new Date().toISOString() },
+  { id: "i99", player: "A. Iwobi",         team: "Nigeria",        group: "Group L", status: "Fit",      severity: "Low",    issue: "Knock (cleared)",         expectedReturn: "Available",           source: "NFF Official",       updatedAt: new Date().toISOString() },
+  { id: "i100",player: "K. Benzema",       team: "Saudi Arabia",   group: "Group L", status: "Doubtful", severity: "High",   issue: "Thigh muscle (chronic)",  expectedReturn: "Matchday decision",   source: "SAFF Official",      updatedAt: new Date().toISOString() },
 ];
