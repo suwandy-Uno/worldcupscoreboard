@@ -14,7 +14,7 @@ const SITE_NAME = "World Cup Scoreboard";
 const DEFAULT_TITLE = "World Cup 2026 Live Scores, Schedule & Standings";
 const DEFAULT_DESC =
   "Free World Cup 2026 live scores, real-time standings, full match schedule, injury updates and predictions. Matches shown in your local timezone. USA · Canada · Mexico.";
-const OG_IMAGE = `${SITE_URL}/og-image.png`;
+const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
