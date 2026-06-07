@@ -131,6 +131,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
       </head>
       <body className={inter.className}>
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ZK7NR5HDJ2"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZK7NR5HDJ2',{page_path:window.location.pathname});`}
+        </Script>
+        {/* Google AdSense */}
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2494373577921258"
           crossOrigin="anonymous"
