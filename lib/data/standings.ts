@@ -1,45 +1,70 @@
 import type { Standing } from "@/lib/types";
 
+// Format: [group, team, played, won, drawn, lost, gf, ga, gd, pts]
 export const standings: Standing[] = [
-  // Group A
-  ["A", "Mexico",         2, 1, 1, 0, 3, 2,  1,  4],
-  ["A", "Netherlands",    2, 1, 0, 1, 2, 2,  0,  3],
-  ["A", "Ecuador",        2, 1, 0, 1, 2, 2,  0,  3],
-  ["A", "Qatar",          2, 0, 1, 1, 1, 2, -1,  1],
-  // Group B
-  ["B", "Spain",          2, 2, 0, 0, 4, 1,  3,  6],
-  ["B", "Japan",          2, 1, 0, 1, 3, 3,  0,  3],
-  ["B", "Chile",          2, 1, 0, 1, 2, 3, -1,  3],
-  ["B", "Albania",        2, 0, 0, 2, 1, 3, -2,  0],
-  // Group C
-  ["C", "USA",            2, 1, 1, 0, 3, 2,  1,  4],
-  ["C", "England",        2, 1, 1, 0, 2, 1,  1,  4],
-  ["C", "Iran",           2, 0, 1, 1, 2, 3, -1,  1],
-  ["C", "Wales",          2, 0, 1, 1, 1, 2, -1,  1],
-  // Group D
-  ["D", "France",         2, 2, 0, 0, 5, 1,  4,  6],
-  ["D", "Argentina",      2, 1, 0, 1, 3, 3,  0,  3],
-  ["D", "Canada",         2, 1, 0, 1, 2, 3, -1,  3],
-  ["D", "Australia",      2, 0, 0, 2, 1, 4, -3,  0],
-  // Group E
-  ["E", "Brazil",         2, 2, 0, 0, 6, 2,  4,  6],
-  ["E", "Korea Republic", 2, 1, 0, 1, 3, 4, -1,  3],
-  ["E", "Germany",        2, 1, 0, 1, 3, 3,  0,  3],
-  ["E", "Morocco",        2, 0, 0, 2, 2, 5, -3,  0],
-  // Group F
-  ["F", "Portugal",       2, 1, 1, 0, 4, 3,  1,  4],
-  ["F", "Senegal",        2, 1, 1, 0, 3, 2,  1,  4],
-  ["F", "Nigeria",        2, 0, 1, 1, 2, 3, -1,  1],
-  ["F", "Uruguay",        2, 0, 1, 1, 2, 3, -1,  1],
+  // Group A — tournament in progress
+  ["A", "Mexico",          1, 1, 0, 0, 2, 1,  1, 3],
+  ["A", "South Africa",    1, 0, 0, 1, 1, 2, -1, 0],
+  ["A", "Netherlands",     0, 0, 0, 0, 0, 0,  0, 0],
+  ["A", "Ecuador",         0, 0, 0, 0, 0, 0,  0, 0],
+  // Group B — tournament in progress
+  ["B", "Spain",           1, 1, 0, 0, 1, 0,  1, 3],
+  ["B", "Japan",           1, 0, 0, 1, 0, 1, -1, 0],
+  ["B", "Albania",         0, 0, 0, 0, 0, 0,  0, 0],
+  ["B", "Chile",           0, 0, 0, 0, 0, 0,  0, 0],
+  // Group C — halftime, match in progress
+  ["C", "USA",             1, 0, 1, 0, 1, 1,  0, 1],
+  ["C", "Iran",            1, 0, 1, 0, 1, 1,  0, 1],
+  ["C", "England",         0, 0, 0, 0, 0, 0,  0, 0],
+  ["C", "Wales",           0, 0, 0, 0, 0, 0,  0, 0],
+  // Group D — upcoming
+  ["D", "France",          0, 0, 0, 0, 0, 0,  0, 0],
+  ["D", "Argentina",       0, 0, 0, 0, 0, 0,  0, 0],
+  ["D", "Australia",       0, 0, 0, 0, 0, 0,  0, 0],
+  ["D", "Canada",          0, 0, 0, 0, 0, 0,  0, 0],
+  // Group E — upcoming
+  ["E", "Brazil",          0, 0, 0, 0, 0, 0,  0, 0],
+  ["E", "Germany",         0, 0, 0, 0, 0, 0,  0, 0],
+  ["E", "Korea Republic",  0, 0, 0, 0, 0, 0,  0, 0],
+  ["E", "Morocco",         0, 0, 0, 0, 0, 0,  0, 0],
+  // Group F — 1 match finished
+  ["F", "Portugal",        1, 0, 1, 0, 2, 2,  0, 1],
+  ["F", "Senegal",         1, 0, 1, 0, 2, 2,  0, 1],
+  ["F", "Uruguay",         0, 0, 0, 0, 0, 0,  0, 0],
+  ["F", "Nigeria",         0, 0, 0, 0, 0, 0,  0, 0],
+  // Group G — upcoming
+  ["G", "Belgium",         0, 0, 0, 0, 0, 0,  0, 0],
+  ["G", "Croatia",         0, 0, 0, 0, 0, 0,  0, 0],
+  ["G", "Qatar",           0, 0, 0, 0, 0, 0,  0, 0],
+  ["G", "Cameroon",        0, 0, 0, 0, 0, 0,  0, 0],
+  // Group H — upcoming
+  ["H", "Italy",           0, 0, 0, 0, 0, 0,  0, 0],
+  ["H", "Colombia",        0, 0, 0, 0, 0, 0,  0, 0],
+  ["H", "Denmark",         0, 0, 0, 0, 0, 0,  0, 0],
+  ["H", "Ghana",           0, 0, 0, 0, 0, 0,  0, 0],
+  // Group I — upcoming
+  ["I", "Switzerland",     0, 0, 0, 0, 0, 0,  0, 0],
+  ["I", "Serbia",          0, 0, 0, 0, 0, 0,  0, 0],
+  ["I", "Tunisia",         0, 0, 0, 0, 0, 0,  0, 0],
+  ["I", "Ivory Coast",     0, 0, 0, 0, 0, 0,  0, 0],
+  // Group J — upcoming
+  ["J", "Poland",          0, 0, 0, 0, 0, 0,  0, 0],
+  ["J", "Austria",         0, 0, 0, 0, 0, 0,  0, 0],
+  ["J", "Egypt",           0, 0, 0, 0, 0, 0,  0, 0],
+  ["J", "Jamaica",         0, 0, 0, 0, 0, 0,  0, 0],
+  // Group K — upcoming
+  ["K", "Turkey",          0, 0, 0, 0, 0, 0,  0, 0],
+  ["K", "Saudi Arabia",    0, 0, 0, 0, 0, 0,  0, 0],
+  ["K", "Jordan",          0, 0, 0, 0, 0, 0,  0, 0],
+  ["K", "New Zealand",     0, 0, 0, 0, 0, 0,  0, 0],
+  // Group L — upcoming
+  ["L", "Ukraine",         0, 0, 0, 0, 0, 0,  0, 0],
+  ["L", "Paraguay",        0, 0, 0, 0, 0, 0,  0, 0],
+  ["L", "Panama",          0, 0, 0, 0, 0, 0,  0, 0],
+  ["L", "Costa Rica",      0, 0, 0, 0, 0, 0,  0, 0],
 ].map(([group, team, played, won, drawn, lost, gf, ga, gd, pts]) => ({
-  group: group as string,
-  team: team as string,
-  played: played as number,
-  won: won as number,
-  drawn: drawn as number,
-  lost: lost as number,
-  gf: gf as number,
-  ga: ga as number,
-  gd: gd as number,
-  pts: pts as number,
+  group: group as string, team: team as string,
+  played: played as number, won: won as number, drawn: drawn as number,
+  lost: lost as number, gf: gf as number, ga: ga as number,
+  gd: gd as number, pts: pts as number,
 }));
