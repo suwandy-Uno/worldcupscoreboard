@@ -63,11 +63,13 @@ function isAllowedUrl(url: string): boolean {
 function stripHtml(raw: string): string {
   return raw
     .replace(/<!\[CDATA\[/gi, "").replace(/\]\]>/g, "")
-    .replace(/<br\s*\/?>/gi, " ")
-    .replace(/<\/?(p|li|ul|ol|div|h[1-6])[^>]*>/gi, " ")
-    .replace(/<[^>]+>/g, "")
+    // Decode entities FIRST so &lt;p&gt; becomes <p> before we strip tags
     .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, " ")
+    // Now strip all HTML tags
+    .replace(/<br\s*\/?>/gi, " ")
+    .replace(/<\/?(p|li|ul|ol|div|h[1-6]|span|a)[^>]*>/gi, " ")
+    .replace(/<[^>]+>/g, "")
     .replace(/\s{2,}/g, " ").trim();
 }
 

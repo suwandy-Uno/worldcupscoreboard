@@ -38,7 +38,7 @@ export function HomeDashboard({
 }) {
   const live = useAutoRefresh(matches, "/api/matches", 15000);
   const injuryState = useAutoRefresh(injuries, "/api/injuries", 60000);
-  const newsState = useAutoRefresh(news, "/api/news", 300000, true); // fetch on mount + refresh every 5 min
+  const newsState = useAutoRefresh(news, "/api/news", 300000, true);
   const scorersState = useAutoRefresh(FALLBACK_SCORERS, "/api/scorers", 120000);
   const { timezone } = useTimezone();
   const [now, setNow] = useState(new Date());
@@ -75,37 +75,41 @@ export function HomeDashboard({
   };
 
   return (
-    <div className="grid gap-6 xl:grid-cols-[1fr_340px]">
-      {/* ── Main column ─────────────────────────────────────── */}
-      <div className="space-y-7">
+    /**
+     * Layout strategy:
+     * Mobile:  Top → Sidebar → News (DOM order)
+     * XL:      [Top  ] [Sidebar spanning both rows]
+     *          [News ]
+     */
+    <div className="xl:grid xl:grid-cols-[1fr_340px] xl:gap-6 xl:items-start space-y-5 xl:space-y-0">
+
+      {/* ── Top section (hero, live, matches, standings) ─────── */}
+      <div className="space-y-4 xl:col-start-1 xl:row-start-1">
 
         {/* Hero banner */}
-        <div className="relative overflow-hidden rounded-xl shadow-glow" style={{ minHeight: 260 }}>
-          {/* Stadium background */}
+        <div className="relative overflow-hidden rounded-xl shadow-glow min-h-[180px] sm:min-h-[260px]">
           <img
             src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1400&q=80"
             alt="Stadium"
             className="absolute inset-0 h-full w-full object-cover"
             loading="eager"
           />
-          {/* Dark gradient overlay */}
           <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(10,14,26,0.92) 45%, rgba(10,14,26,0.55) 75%, rgba(10,14,26,0.15) 100%)" }} />
-          {/* Gold accent glow */}
           <div className="absolute inset-0" style={{ background: "radial-gradient(circle at 80% 50%, rgba(246,196,83,.12), transparent 50%)" }} />
-          <div className="relative z-10 p-8 max-w-lg">
+          <div className="relative z-10 p-5 sm:p-8 max-w-lg">
             <p className="text-xs font-bold uppercase tracking-[.2em] text-gold">FIFA World Cup™</p>
-            <h1 className="mt-2 text-4xl font-black leading-tight sm:text-5xl">
+            <h1 className="mt-1.5 text-3xl font-black leading-tight sm:text-4xl lg:text-5xl">
               FIFA WORLD CUP<br />2026™
             </h1>
-            <p className="mt-1.5 text-lg font-semibold text-slate-300">11 JUNE — 19 JULY 2026</p>
-            <div className="mt-4 flex flex-wrap gap-5 text-sm text-slate-300">
-              <span className="flex items-center gap-1.5"><Trophy className="h-3.5 w-3.5 text-gold" /> 48 Teams</span>
-              <span className="flex items-center gap-1.5"><CalendarDays className="h-3.5 w-3.5" /> 104 Matches</span>
-              <span className="flex items-center gap-1.5"><MapPin className="h-3.5 w-3.5" /> 16 Cities</span>
-              <span className="flex items-center gap-1.5"><Star className="h-3.5 w-3.5" /> 3 Countries</span>
+            <p className="mt-1 text-base font-semibold text-slate-300 sm:text-lg">11 JUNE — 19 JULY 2026</p>
+            <div className="mt-3 flex flex-wrap gap-3 text-xs text-slate-300 sm:gap-5 sm:text-sm">
+              <span className="flex items-center gap-1.5"><Trophy className="h-3 w-3 text-gold sm:h-3.5 sm:w-3.5" /> 48 Teams</span>
+              <span className="flex items-center gap-1.5"><CalendarDays className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> 104 Matches</span>
+              <span className="flex items-center gap-1.5"><MapPin className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> 16 Cities</span>
+              <span className="flex items-center gap-1.5"><Star className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> 3 Countries</span>
             </div>
-            <a href="/schedule" className="mt-5 inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-bold text-white hover:bg-brand/80">
-              <CalendarDays className="h-4 w-4" /> Explore Full Schedule
+            <a href="/schedule" className="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand px-4 py-2 text-xs font-bold text-white hover:bg-brand/80 sm:px-5 sm:py-2.5 sm:text-sm">
+              <CalendarDays className="h-3.5 w-3.5" /> Explore Full Schedule
             </a>
           </div>
         </div>
@@ -113,13 +117,13 @@ export function HomeDashboard({
         {/* Live Now */}
         {liveMatches.length > 0 && (
           <section>
-            <div className="mb-3 flex items-center gap-2">
+            <div className="mb-2 flex items-center gap-2">
               <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-rose-500" />
-              <h2 className="text-base font-bold">Live Now</h2>
+              <h2 className="text-sm font-bold sm:text-base">Live Now</h2>
             </div>
-            <div className="flex gap-4 overflow-x-auto pb-1 scrollbar-hide">
+            <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide">
               {liveMatches.map((m) => (
-                <div key={m.id} className="min-w-[280px] flex-shrink-0 sm:min-w-[300px]">
+                <div key={m.id} className="min-w-[260px] flex-shrink-0 sm:min-w-[300px]">
                   <MatchCard match={m} />
                 </div>
               ))}
@@ -129,57 +133,36 @@ export function HomeDashboard({
 
         {/* Today's Matches */}
         <section>
-          <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-base font-bold">Today&apos;s Matches</h2>
-            <a href="/schedule" className="text-xs text-brand hover:opacity-80">View Full Schedule</a>
+          <div className="mb-2 flex items-center justify-between">
+            <h2 className="text-sm font-bold sm:text-base">Today&apos;s Matches</h2>
+            <a href="/schedule" className="text-xs text-brand hover:opacity-80">Full Schedule</a>
           </div>
           <ScheduleTable matches={upcoming.slice(0, 4)} />
         </section>
 
         {/* Group Standings */}
         <section>
-          <h2 className="mb-3 text-base font-bold">Group Standings</h2>
-          <div className="grid gap-4 sm:grid-cols-3">
+          <h2 className="mb-2 text-sm font-bold sm:text-base">Group Standings</h2>
+          <div className="grid gap-3 grid-cols-1 sm:grid-cols-3">
             {groups.map((g) => (
               <StandingsTable key={g} group={g} rows={standings.filter((r) => r.group === g)} />
             ))}
           </div>
         </section>
-
-        {/* Latest News */}
-        <section>
-          <div className="mb-3 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <h2 className="text-base font-bold">Latest News</h2>
-              {newsState.data.some((n) => n.isBreaking) && (
-                <span className="flex items-center gap-1 rounded bg-rose-600/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-rose-400">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-500" /> Live Updates
-                </span>
-              )}
-            </div>
-            <a href="/news" className="text-xs text-brand hover:opacity-80">View All</a>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[...newsState.data]
-              .sort((a, b) => (b.isBreaking ? 1 : 0) - (a.isBreaking ? 1 : 0))
-              .slice(0, 20)
-              .map((item) => <NewsCard key={item.id} item={item} />)}
-          </div>
-        </section>
       </div>
 
-      {/* ── Right sidebar ────────────────────────────────────── */}
-      <aside className="space-y-5">
+      {/* ── Sidebar ─ on mobile: shows between top and news ──── */}
+      <aside className="space-y-4 xl:col-start-2 xl:row-start-1 xl:row-span-2 xl:sticky xl:top-4">
 
         {/* Your Time */}
         <div className="card p-4">
           <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-300">
             <Clock className="h-4 w-4" /> Your Time
           </div>
-          <p className="text-4xl font-black tabular-nums">{timeStr}</p>
+          <p className="text-3xl font-black tabular-nums sm:text-4xl">{timeStr}</p>
           <p className="mt-1 text-xs text-slate-400">{dateStr}</p>
           <div className="mt-2 flex items-center justify-between">
-            <span className="text-sm text-slate-300">{tzCity}, United Kingdom</span>
+            <span className="text-sm text-slate-300">{tzCity}</span>
             <span className="rounded bg-white/10 px-2 py-0.5 text-xs font-semibold text-slate-300">{tzAbbr}</span>
           </div>
         </div>
@@ -260,6 +243,28 @@ export function HomeDashboard({
         </div>
 
       </aside>
+
+      {/* ── News section ─ always last ───────────────────────── */}
+      <section className="xl:col-start-1 xl:row-start-2">
+        <div className="mb-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <h2 className="text-sm font-bold sm:text-base">Latest News</h2>
+            {newsState.data.some((n) => n.isBreaking) && (
+              <span className="flex items-center gap-1 rounded bg-rose-600/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-rose-400">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-rose-500" /> Live Updates
+              </span>
+            )}
+          </div>
+          <a href="/news" className="text-xs text-brand hover:opacity-80">View All</a>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[...newsState.data]
+            .sort((a, b) => (b.isBreaking ? 1 : 0) - (a.isBreaking ? 1 : 0))
+            .slice(0, 20)
+            .map((item) => <NewsCard key={item.id} item={item} />)}
+        </div>
+      </section>
+
     </div>
   );
 }
