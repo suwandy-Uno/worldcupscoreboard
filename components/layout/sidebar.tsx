@@ -2,6 +2,7 @@
 
 import { Activity, CalendarDays, GitBranch, Home, MapPin, Newspaper, Send, Shield, Sparkles, Star, Table2, Trophy, Users } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 const links = [
@@ -82,6 +83,7 @@ function ShareWidget() {
 }
 
 export function Sidebar() {
+  const pathname = usePathname();
   const cd = useCountdown(NEXT_MATCH_ISO);
 
   return (
@@ -116,12 +118,14 @@ export function Sidebar() {
       <div className="flex-1 overflow-y-auto p-4 scrollbar-hide">
 
       <nav className="space-y-0.5">
-        {links.map(([href, label, Icon], index) => (
+        {links.map(([href, label, Icon]) => {
+          const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
+          return (
           <Link
             key={label}
             href={href}
             className={`flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-colors ${
-              index === 0 ? "bg-brand text-white" : "text-slate-200 hover:bg-white/[.07]"
+              active ? "bg-brand text-white" : "text-slate-200 hover:bg-white/[.07]"
             }`}
           >
             <Icon className="h-4.5 w-4.5 h-5 w-5" />
@@ -130,7 +134,8 @@ export function Sidebar() {
               <span className="ml-auto rounded bg-rose-600 px-2 py-0.5 text-[10px] font-bold tracking-wide">LIVE</span>
             )}
           </Link>
-        ))}
+          );
+        })}
       </nav>
 
       {/* Next Big Match */}
