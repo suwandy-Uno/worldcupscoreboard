@@ -19,7 +19,7 @@ const routes: Array<[string, number, MetadataRoute.Sitemap[number]["changeFreque
   ["/world-cup-2026-standings", 0.85, "hourly"],
   ["/world-cup-2026-predictions", 0.8, "daily"],
   ["/world-cup-2026-injuries", 0.8, "daily"],
-  ["/world-cup-2026-bracket", 0.8, "daily"],
+  ["/world-cup-2026-playoff", 0.8, "daily"],
   ["/world-cup-2026-schedule-uk-time", 0.85, "daily"],
   ["/world-cup-2026-schedule-us-time", 0.85, "daily"],
   ["/world-cup-2026-schedule-australia-time", 0.85, "daily"],
