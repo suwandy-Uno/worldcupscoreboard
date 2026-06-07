@@ -4,9 +4,8 @@
 
   # Block your site from being embedded in iframes (clickjacking)
   X-Frame-Options: SAMEORIGIN
-  Content-Security-Policy: frame-ancestors 'self'
 
-  # Prevent MIME-type sniffing (stops scripts disguised as images)
+  # Prevent MIME-type sniffing
   X-Content-Type-Options: nosniff
 
   # Only send referrer on same-origin requests
@@ -15,10 +14,7 @@
   # Lock down browser features not needed by a sports scoreboard
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
 
-  # Content Security Policy — allows Google AdSense, blocks everything else
+  # Content Security Policy
+  # img-src allows https: (flagcdn, unsplash, clearbit, BBC/Guardian images, etc.)
+  # connect-src allows GA4 and self (API calls go to /api/* same-origin)
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://adservice.google.com https://www.googletagservices.com https://partner.googleadservices.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.googlesyndication.com https://*.googleadservices.com https://adservice.google.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
-
-  # Cross-origin isolation
-  X-DNS-Prefetch-Control: off
-  Cross-Origin-Opener-Policy: same-origin
-  Cross-Origin-Resource-Policy: same-origin
