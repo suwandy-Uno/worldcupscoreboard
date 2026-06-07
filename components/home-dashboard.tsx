@@ -38,7 +38,7 @@ export function HomeDashboard({
 }) {
   const live = useAutoRefresh(matches, "/api/matches", 15000);
   const injuryState = useAutoRefresh(injuries, "/api/injuries", 60000);
-  const newsState = useAutoRefresh(news, "/api/news", 300000); // 5 min — RSS feeds cache for 5 min
+  const newsState = useAutoRefresh(news, "/api/news", 300000, true); // fetch on mount + refresh every 5 min
   const scorersState = useAutoRefresh(FALLBACK_SCORERS, "/api/scorers", 120000);
   const { timezone } = useTimezone();
   const [now, setNow] = useState(new Date());
