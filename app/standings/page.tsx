@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { AutoStandings } from "@/components/auto-data-views";
 import { PageHeader } from "@/components/ui/page-header";
-import { SearchFilterBar } from "@/components/ui/search-filter-bar";
-import { getStandings } from "@/lib/services/sports-data";
+import { StandingsTable } from "@/components/ui/standings-table";
+import { standings } from "@/lib/data/standings";
 
 export const metadata: Metadata = {
   title: "World Cup 2026 Group Standings — Live Tables",
@@ -15,13 +14,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function StandingsPage() {
-  const standings = await getStandings();
+export default function StandingsPage() {
+  const groups = Array.from(new Set(standings.map((r) => r.group)));
   return (
     <>
-      <PageHeader title="World Cup 2026 Standings" description="Live group tables for all 12 groups. See which teams qualify for the knockout rounds." />
-      <SearchFilterBar placeholder="Filter by team or group..." />
-      <AutoStandings standings={standings} />
+      <PageHeader
+        title="World Cup 2026 Standings"
+        description="Live group tables. See which teams qualify for the knockout rounds."
+      />
+      <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
+        {groups.map((group) => (
+          <StandingsTable
+            key={group}
+            group={group}
+            rows={standings.filter((r) => r.group === group)}
+          />
+        ))}
+      </div>
     </>
   );
 }
