@@ -17,7 +17,9 @@ export function useAutoRefresh<T>(initialData: T, endpoint: string, intervalMs =
         if (!response.ok) return;
         const next = (await response.json()) as T;
         if (active) {
-          setData(next);
+          // Only replace static fallback data if API returns actual content
+          const isEmpty = Array.isArray(next) && (next as unknown[]).length === 0;
+          if (!isEmpty) setData(next);
           setUpdatedAt(new Date());
         }
       } finally {
