@@ -54,6 +54,7 @@ export type Injury = {
   id: string;
   player: string;
   team: string;
+  group: string;
   status: "Out" | "Doubtful" | "Suspended" | "Fit" | "Unknown";
   severity: "Low" | "Medium" | "High";
   issue: string;

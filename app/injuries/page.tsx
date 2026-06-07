@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { AutoInjuries } from "@/components/auto-data-views";
 import { PageHeader } from "@/components/ui/page-header";
-import { SearchFilterBar } from "@/components/ui/search-filter-bar";
+import { InjuryFilterView } from "@/components/ui/injury-filter-view";
 import { getInjuries } from "@/lib/services/sports-data";
 
 export const metadata: Metadata = {
@@ -19,9 +18,11 @@ export default async function InjuriesPage() {
   const injuries = await getInjuries();
   return (
     <>
-      <PageHeader title="World Cup 2026 Injuries" description="Latest injury news and suspension updates for all 48 teams. Check player fitness before every match." />
-      <SearchFilterBar placeholder="Filter by player, team, or status..." />
-      <AutoInjuries injuries={injuries} />
+      <PageHeader
+        title="World Cup 2026 Injuries"
+        description="Latest injury news and suspension updates for all 48 teams. Check player fitness before every match."
+      />
+      <InjuryFilterView injuries={injuries} />
     </>
   );
 }
