@@ -6,7 +6,7 @@ import { getNews } from "@/lib/services/news-data";
 
 export const metadata: Metadata = {
   title: "World Cup 2026 News — Latest Football Updates",
-  description: "Breaking World Cup 2026 news, match reports, expert analysis and injury alerts from BBC Sport and The Guardian. Updated every 5 minutes.",
+  description: "Breaking World Cup 2026 news, match reports, expert analysis and injury alerts. Updated throughout the tournament.",
   alternates: { canonical: "/news" },
   openGraph: {
     title: "World Cup 2026 Latest News & Match Reports",
@@ -19,7 +19,7 @@ export default async function NewsPage() {
   const news = await getNews();
   return (
     <>
-      <PageHeader title="World Cup 2026 News" description="Latest match reports, expert analysis, injury alerts and breaking news. Sourced from BBC Sport and The Guardian." />
+      <PageHeader title="World Cup 2026 News" description="Latest match reports, expert analysis, injury alerts and breaking news from the 2026 FIFA World Cup." />
       <SearchFilterBar placeholder="Search news..." />
       <AutoNews news={news} />
     </>
