@@ -58,7 +58,7 @@ export default function PrivacyPolicyPage() {
           <ul className="mt-2 list-disc space-y-1 pl-6">
             <li><strong>Google Analytics</strong> — <a href="https://policies.google.com/privacy" className="text-brand underline" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
             <li><strong>Google AdSense</strong> — <a href="https://policies.google.com/privacy" className="text-brand underline" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
-            <li><strong>Vercel / Cloudflare</strong> — hosting and content delivery</li>
+            <li><strong>Cloudflare Pages</strong> — hosting and content delivery</li>
             <li><strong>flagcdn.com</strong> — flag images served from an external CDN</li>
           </ul>
         </section>

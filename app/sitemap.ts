@@ -24,6 +24,10 @@ const routes: Array<[string, number, MetadataRoute.Sitemap[number]["changeFreque
   ["/world-cup-2026-schedule-us-time", 0.85, "daily"],
   ["/world-cup-2026-schedule-australia-time", 0.85, "daily"],
   ["/world-cup-2026-schedule-india-time", 0.85, "daily"],
+  // Information pages — required for AdSense & Google discovery
+  ["/about", 0.6, "monthly"],
+  ["/contact", 0.5, "monthly"],
+  ["/privacy-policy", 0.4, "monthly"],
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
